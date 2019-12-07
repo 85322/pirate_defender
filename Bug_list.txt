@@ -1,0 +1,2 @@
+-erster level gebäudestufe keine kosten abgezogen [O]
+-kosten erhöhen sich nicht [X]
