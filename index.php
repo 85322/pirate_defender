@@ -85,7 +85,7 @@
 	<nav>
 		<ul>
 			<li>Map</li>
-			<li>asd</li>
+			<li>aasdsd</li>
 		</ul>
 	</nav>
 </div>
