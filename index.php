@@ -11,7 +11,7 @@
 <br>
 <br>
 <!-- TOP NAV-->
-	<nav id="nav1">
+	<nav id="navMenuRight">
 		<ul>
 			<li>Resources</li>
 			<li id="resource_wood">0</li>
@@ -25,7 +25,7 @@
 
 
 <!-- BUILDINGS-->
-<div id="buildingsNav">
+<div id="buildingsNav" class="containerTab">
 	<nav id="buildings">
 		<ul>
 			<li>Buildings</li>
@@ -40,23 +40,93 @@
 	</nav>
 </div>
 
+<!-- Resources  -->
+<div id="resourcesNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Resources</li>
+			<li>Resources</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- Facilities  -->
+<div id="facilityNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Facilities</li>
+			<li>Facilities</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- RESEARCH  -->
+<div id="researchNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>asdasdasdasdasd</li>
+			<li>44444444444</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- DEFENCE  -->
+<div id="defenceNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Defence</li>
+			<li>asd</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- MAP  -->
+<div id="mapNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Map</li>
+			<li>asd</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- SHIPYARD  -->
+<div id="shipyardNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Shipyard</li>
+			<li>asd</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- FLEET  -->
+<div id="fleetNav" class="containerTab">
+	<nav>
+		<ul>
+			<li>Fleet</li>
+			<li>asd</li>
+		</ul>
+	</nav>
+</div>
+
 <!--MAIN MENU RIGHT -->
 <div id="menu">
 	<ul>
-		<li>Buildings</li>
-		<li>Resources</li>
-		<li>Facilities</li>
-		<li>Research</li>
-		<li>Defence</li>
-		<li>Map</li>
-		<li>Shipyard</li>
-		<li>Fleet</li>
+		<li id="menuBuildings">Buildings</li>
+		<li id="menuResources">Resources</li>
+		<li id="menuFacilities">Facilities</li>
+		<li id="menuResearch">Research</li>
+		<li id="menuDefence">Defence</li>
+		<li id="menuMap">Map</li>
+		<li id="menuShipyard">Shipyard</li>
+		<li id="menuFleet">Fleet</li>
 	</ul>
 </div>
 
 
-<script src="game_logic.js">
-</script>	
+<script src="game_logic.js"></script>	
+<script src="gui.js"></script>
 
 
 <?php
