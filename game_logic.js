@@ -128,4 +128,24 @@ document.getElementById("showResourcesConsole").onclick=function(){showResources
 }
 
 */
+
+ //RESOURCE STATISTICS
+
+let resourceArrayStatisticMinute = [wood, stone, iron];
+
+function resourceMenuCalcProductionMinute(){
+	let productionWood = Math.floor(3 * woodBuildingLevel * 1,1);
+	let productionStone = Math.floor(2 * stoneBuildingLevel * 1,1);
+	let productionIron = Math.floor(1 * ironBuildingLevel * 1,1);
+
+	resourceArrayStatisticMinute[0] = productionWood * 30;
+	resourceArrayStatisticMinute[1] = productionStone * 30;
+	resourceArrayStatisticMinute[2] = productionIron * 30;
+
+	document.getElementById("woodPerMinute").innerHTML = resourceArrayStatisticMinute[0] + " total wood per minute.";
+	document.getElementById("stonePerMinute").innerHTML = resourceArrayStatisticMinute[1] + " total stone per minute.";
+	document.getElementById("ironPerMinute").innerHTML = resourceArrayStatisticMinute[2] + " total iron per minute.";
+}
+
+	window.setInterval(resourceMenuCalcProductionMinute, 2000);
 }());

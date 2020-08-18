@@ -50,17 +50,17 @@ body, a {
 		}
 
 
-#menu ul {
+#mainMenuRight ul {
 	background-color: blue;
 	position: fixed;
 	margin-right: 0px;
 	right: 0px;
 	list-style-type: none;
-	padding-top: : 3px;
+	padding-top: 3px;
 	border: 1px, lime ;
-		}
+	}
 
-#menu li {
+#mainMenuRight li {
 	padding-bottom: 3px;
 	margin-left: 0px;
 	cursor: pointer;
