@@ -4,15 +4,19 @@ body, a {
 	margin: 0px;
 }
 
+
 #buildings {
 		background-color: black;
 		position: fixed;
 		margin-bottom: 0px;		
-		width: 700px
+		width: 700px;
 }
 
 #buildings li {
 	background-color: black;
+	cursor: pointer;
+
+	
 }
 
 
@@ -20,6 +24,7 @@ body, a {
 	background-color: brown;
 	position: fixed;
 	bottom: 75px;
+	
 }
 
 
@@ -58,6 +63,7 @@ body, a {
 	list-style-type: none;
 	padding-top: 3px;
 	border: 1px, lime ;
+	
 	}
 
 #mainMenuRight li {
@@ -65,6 +71,11 @@ body, a {
 	margin-left: 0px;
 	cursor: pointer;
 }
+
+#mainMenuRight li:hover {	
+	transform: scale(1.2);
+  }
+
 
 #researchNav {
 	background-color: brown;
@@ -76,4 +87,47 @@ body, a {
 	display: none;
 	bottom: 0px;
 	position: fixed;
+}
+
+.containerMapTiles {
+	display: inline-grid;
+	grid-template-columns: auto auto auto auto auto auto ;
+	width: 15%;
+	outline: 1px solid brown;
+	color: red;	
+	align-content: center;
+	
+}
+
+.mapGridItem {
+	background-color: blue;
+	margin: 0px;
+	padding: 0px;
+	font-size: 0px;
+	text-align: center;
+	width: 100%;	
+}
+
+.mainCenterInfo {
+	width: 500px;
+	height: 300px;
+	border: 1px solid green;
+	padding: 10px;
+	margin: 20px;
+}
+
+.containerTabBuildings {
+	display: none;
+	bottom: 0px;
+	position: center;
+	right: 150px ;
+	width: 50%;
+	background: orange;
+	margin: 5px;
+	text-align: center;
+}
+
+#containerTabBuildingsImage {
+	height: 200px;
+	width: 200px;
 }

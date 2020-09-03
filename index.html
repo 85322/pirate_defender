@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<!--<link rel="import" href="import/doc.html"> importiert anderes html test. ok doch als JS inner html -->
 	<title>TEST</title>
+	
 </head>
 <body>
 
@@ -16,11 +16,11 @@
 		<ul>
 			<li>Resources</li>
 			<li id="resource_wood">0</li>
-			<li><img src="images/wood_icon.jpg"></li>
+			<li><img src="images/wood_icon.png"></li>
 			<li id="resource_stone">0</td></li>
-			<li><img src="images/stone_icon.jpg"></td></li>
+			<li><img src="images/stone_icon.png"></td></li>
 			<li id="resource_iron">0</li>
-			<li><img src="images/metal_icon.jpg"></li>
+			<li><img src="images/metal_icon.png"></li>
 		</ul>
 	</nav>
 
@@ -30,12 +30,12 @@
 	<nav id="buildings">
 		<ul>
 			<li>Buildings</li>
-			<li><img id="woodCutter_icon" src="images/woodcutter_icon.jpg"></li>
+			<li id="woodCutter_tooltip"><img id="woodCutter_icon" src="images/woodcutter_icon.png"></li>
 			<li><p id="woodPara">0</p></li>
-			<li><img id="stoneCutter_icon" src="images/stonecutter_icon.jpg"></li>
+			<li id="stoneCutter_tooltip"><img id="stoneCutter_icon" src="images/stonecutter_icon.png"></li>
 			<li><p id="stonePara">0</p></li>
-			<li><img id="ironSmelter_icon" src="images/smelter_
-			icon.jpg"></li>
+			<li id="ironSmelter_tooltip"><img id="ironSmelter_icon" src="images/smelter_
+			icon.png"></li>
 			<li><p id="ironPara">0</p></li>
 		</ul>
 	</nav>
@@ -84,12 +84,41 @@
 
 <!-- MAP  -->
 <div id="mapNav" class="containerTab">
-	<nav>
-		<ul>
-			<li>Map</li>
-			<li>aasdsd</li>
-		</ul>
-	</nav>
+
+	<div class="containerMapTiles">
+
+		<div class="mapGridItem" id="mapCell01"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell02"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell03"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell04"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell05"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell06"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell07"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell08"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell09"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell10"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell11"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell12"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell13"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell14"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell15"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell16"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell17"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell18"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell19"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell20"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell21"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell22"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell23"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell24"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell25"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell26"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell27"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell28"><img src= "images/island_tile6.gif"></div>
+		<div class="mapGridItem" id="mapCell29"><img src= "images/water_tile.gif"></div>
+		<div class="mapGridItem" id="mapCell30"><img src= "images/water_tile.gif"></div>
+	
+	</div> 
 </div>
 
 <!-- SHIPYARD  -->
@@ -123,13 +152,30 @@
 		<li id="menuMap">Map</li>
 		<li id="menuShipyard">Shipyard</li>
 		<li id="menuFleet">Fleet</li>
+		<li id="menuReset">RESET MAP</li>
 	</ul>
 </div>
 
 
+<div class="mainCenterInfo">
+	<div id="woodCutter_iconDetailTab" class="containerTabBuildings"><img id="containerTabBuildingsImage" src="images/Small_warehouse.webp"> tab wood cutter.</div>
+	<div id="stoneCutter_iconDetailTab" class="containerTabBuildings">Building tab stone cutter.</div>
+	<div id="ironSmelter_iconDetailTab" class="containerTabBuildings">Building tab iron smelter.</div>
+</div>
+
+
+
 <script src="game_logic.js"></script>	
 <script src="gui.js"></script>
-<script src="resourcesMenuCalc.js"></script>
+
+<!-- <script type="module" src="export.js">
+	import {expValue} from "/export.js";
+	console.log(expValue);
+</script>
+
+blocked by CORS policy: Cross origin requests are only supported for 
+protocol schemes: http, data, chrome, chrome-extension, chrome-untrusted, https.
+-->
 
 </body>
 </html>

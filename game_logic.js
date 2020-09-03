@@ -4,8 +4,8 @@ var woodBuildingLevel = 0;
 var stoneBuildingLevel = 0;
 var ironBuildingLevel = 0;
 
-var wood = 300;
-var stone = 300;
+var wood = 100;
+var stone = 100;
 var iron = 0;
 
 var resources_array = [wood,stone,iron];
@@ -14,10 +14,10 @@ var resources_array = [wood,stone,iron];
 //WOOD UPGRADE
 function upgradeWood(){ 
 
-	if (resources_array[0] > 40 * 1.5 * woodBuildingLevel && resources_array[1] > 10 * 1.5 * woodBuildingLevel) {
+	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
 
-		var result_wood = Math.floor(resources_array[0] - 40 * 1.5 * woodBuildingLevel);
-		var result_stone = Math.floor(resources_array[1] - 10 * 1.5 * woodBuildingLevel);
+		var result_wood = Math.floor(resources_array[0] - 60 * woodBuildingLevel);
+		var result_stone = Math.floor(resources_array[1] - 15 * woodBuildingLevel);
 
 		resources_array[0] = result_wood;
 		resources_array[1] = result_stone;
@@ -40,10 +40,10 @@ document.getElementById("woodCutter_icon").onclick=function (){
 //STONE UPGRADE
 function upgradeStone(){
 
-	if (resources_array[0] > 30 * 1.5 * stoneBuildingLevel && resources_array[1] > 15 * 1.5 * stoneBuildingLevel) {
+	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
 
-		var result_wood = Math.floor(resources_array[0] - 30 * 1.5 * stoneBuildingLevel);
-		var result_stone = Math.floor(resources_array[1] - 15 * 1.5 * stoneBuildingLevel);
+		var result_wood = Math.floor(resources_array[0] - 45 * stoneBuildingLevel);
+		var result_stone = Math.floor(resources_array[1] - 22 * stoneBuildingLevel);
 
 		resources_array[0] = result_wood;
 		resources_array[1] = result_stone;
@@ -66,10 +66,10 @@ document.getElementById("stoneCutter_icon").onclick=function(){
 //IRON UPGRADE
 function upgradeIron(){
 
-			if (resources_array[0] > 150 * 1.5 * ironBuildingLevel && resources_array[1] > 75 * 1.5 * ironBuildingLevel) {
+			if (resources_array[0] > 225 * ironBuildingLevel && resources_array[1] > 112 * ironBuildingLevel) {
 
-		var result_wood = Math.floor(resources_array[0] - 150 * 1.5 * ironBuildingLevel);
-		var result_stone = Math.floor(resources_array[1] - 75 * 1.5 * ironBuildingLevel);
+		var result_wood = Math.floor(resources_array[0] - 225 * ironBuildingLevel);
+		var result_stone = Math.floor(resources_array[1] - 112 * ironBuildingLevel);
 
 		resources_array[0] = result_wood;
 		resources_array[1] = result_stone;
@@ -88,6 +88,53 @@ function upgradeIron(){
 document.getElementById("ironSmelter_icon").onclick=function(){
 	upgradeIron();
 }
+
+
+
+
+//UPGRADE ICONS CHECK
+
+document.getElementById("menuBuildings").onlclick=function(){
+	iconImageChangerWoodCutterIcon();
+	iconImageChangerStoneCutterIcon();
+	iconImageChangerIronCutterIcon();
+}
+
+
+function iconImageChangerWoodCutterIcon() {
+	let image = document.getElementById('woodCutter_icon');
+	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
+		image.src = "images/woodcutter_icon.png";
+	} else {
+		image.src = "images/woodcutter_unable_icon.png";
+	}
+}
+
+	window.setInterval(iconImageChangerWoodCutterIcon, 500);
+
+
+function iconImageChangerStoneCutterIcon() {
+	let image = document.getElementById('stoneCutter_icon');
+	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
+		image.src = "images/stonecutter_icon.png";
+	} else {
+		image.src = "images/stonecutter_unable_icon.png";
+	}
+}
+	
+	window.setInterval(iconImageChangerStoneCutterIcon, 500);
+
+
+function iconImageChangerIronCutterIcon() {
+	let image = document.getElementById('ironSmelter_icon');
+	if (resources_array[0] > 225 * ironBuildingLevel && resources_array[1] > 112 * ironBuildingLevel)  {
+		image.src = "images/smelter_icon.png";
+	} else {
+		image.src = "images/smelter_unable_icon.png";
+	}
+}
+	
+	window.setInterval(iconImageChangerIronCutterIcon, 500);
 
 
 //RESOURCE PRODUCTION
@@ -119,15 +166,11 @@ function production_iron(){
 
 
 //TEST AREA
-/*function showResources(){
-	console.log(resources_array[0]);
-	
-}
 
-document.getElementById("showResourcesConsole").onclick=function(){showResources();
-}
+	//document.getElementById("woodCutter_icon").onmouseover=
 
-*/
+
+
 
  //RESOURCE STATISTICS
 
@@ -142,10 +185,79 @@ function resourceMenuCalcProductionMinute(){
 	resourceArrayStatisticMinute[1] = productionStone * 30;
 	resourceArrayStatisticMinute[2] = productionIron * 30;
 
-	document.getElementById("woodPerMinute").innerHTML = resourceArrayStatisticMinute[0] + " total wood per minute.";
-	document.getElementById("stonePerMinute").innerHTML = resourceArrayStatisticMinute[1] + " total stone per minute.";
-	document.getElementById("ironPerMinute").innerHTML = resourceArrayStatisticMinute[2] + " total iron per minute.";
+	document.getElementById("woodPerMinute").innerHTML = resourceArrayStatisticMinute[0] + " wood / min";
+	document.getElementById("stonePerMinute").innerHTML = resourceArrayStatisticMinute[1] + " stone / min";
+	document.getElementById("ironPerMinute").innerHTML = resourceArrayStatisticMinute[2] + " iron / min";
 }
 
 	window.setInterval(resourceMenuCalcProductionMinute, 2000);
+
+
+
+
+
+//MAP GENERATION
+
+
+
+
+/*function mapGenerationRandomizer() {
+	let mapTileArray = ["images/island_tile.png", "images/water_tile.gif"]
+	let num = Math.floor(Math.random() * 1);
+	document.getElementById("mapCell1").appendChild(num);
+	
+}
+
+
+	geht, ein image bis jetzt, noch nicht random, noch kein weg alle cellIDs/class anzusprechen
+	(array alle IDs, randomizer?)
+	|
+	|
+	v
+ 
+function mapGenerationRandomizer() { 
+	let img = new Image(); 
+	img.src ='images/water_tile.gif';
+	const mapTileArray = [] 
+	document.getElementById('mapCell1').appendChild(img); 
+	//document.getElementById("mapCell1").innerHTML = "Image Element Added.";  
+}  
+
+ document.getElementById("menuReset").onclick=function() {
+	 mapGenerationRandomizer();
+	 ;
+ }
+ */
+ 	function mapReset() {
+	location.reload();	 
+	}
+
+	document.getElementById("menuReset").onclick=function() {
+	mapReset();
+}
+
+//KEYBINDS
+
+const Action = {
+  help()    { console.log(window.alert("Help string")) },
+};
+
+const keyAction = {
+  F1: { keydown: Action.help},
+};
+
+const keyHandler = (ev) => {
+  if (ev.repeat) return;  
+  if (!(ev.key in keyAction) || !(ev.type in keyAction[ev.key])) return;
+  keyAction[ev.key][ev.type]();
+};
+
+['keydown', 'keyup'].forEach((evType) => {
+  document.body.addEventListener(evType, keyHandler);
+});
+
+
+
+
+
 }());
