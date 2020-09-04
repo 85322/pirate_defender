@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>TEST</title>
+	<link rel="icon" type="image/png" href="images/icons/favicon.png" sizes="32x32">
+	<title>Island Builder</title>
 	
 </head>
 <body>
@@ -15,12 +16,9 @@
 	<nav id="navMenuRight">
 		<ul>
 			<li>Resources</li>
-			<li id="resource_wood">0</li>
-			<li><img src="images/wood_icon.png"></li>
-			<li id="resource_stone">0</td></li>
-			<li><img src="images/stone_icon.png"></td></li>
-			<li id="resource_iron">0</li>
-			<li><img src="images/metal_icon.png"></li>
+			<li><img src="images/icons/Wood.webp"><span id="resource_wood">0</span></li>
+			<li><img src="images/icons/Stone.webp"><span id="resource_stone">0</span></td></li>
+			<li><img src="images/icons/Tools.webp"><span id="resource_iron">0</span></li>
 		</ul>
 	</nav>
 
@@ -30,13 +28,10 @@
 	<nav id="buildings">
 		<ul>
 			<li>Buildings</li>
-			<li id="woodCutter_tooltip"><img id="woodCutter_icon" src="images/woodcutter_icon.png"></li>
-			<li><p id="woodPara">0</p></li>
-			<li id="stoneCutter_tooltip"><img id="stoneCutter_icon" src="images/stonecutter_icon.png"></li>
-			<li><p id="stonePara">0</p></li>
+			<li id="woodCutter_tooltip"><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"><span id="woodPara">0</span></li>
+			<li id="stoneCutter_tooltip"><img id="stoneCutter_icon" src="images/stonecutter_icon.png"><span id="stonePara">0</span></li>
 			<li id="ironSmelter_tooltip"><img id="ironSmelter_icon" src="images/smelter_
-			icon.png"></li>
-			<li><p id="ironPara">0</p></li>
+			icon.png"><span id="ironPara">0</span></li>
 		</ul>
 	</nav>
 </div>
@@ -45,9 +40,9 @@
 <div id="resourcesNav" class="containerTab">
 	<nav>
 		<ul>
-			<li><p id="woodPerMinute">0</p></li>
-			<li><p id="stonePerMinute">0</p></li>
-			<li><p id="ironPerMinute">0</p></li>
+			<li><p id="woodPerMinute" class="resourcesProductionInfoWood">0</p></li>
+			<li><p id="stonePerMinute" class="resourcesProductionInfoStone">0</p></li>
+			<li><p id="ironPerMinute" class="resourcesProductionInfoTools">0</p></li>
 		</ul>
 	</nav>
 </div>
@@ -158,9 +153,63 @@
 
 
 <div class="mainCenterInfo">
-	<div id="woodCutter_iconDetailTab" class="containerTabBuildings"><img id="containerTabBuildingsImage" src="images/Small_warehouse.webp"> tab wood cutter.</div>
-	<div id="stoneCutter_iconDetailTab" class="containerTabBuildings">Building tab stone cutter.</div>
-	<div id="ironSmelter_iconDetailTab" class="containerTabBuildings">Building tab iron smelter.</div>
+	<div id="woodCutter_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Lumberjack's hut</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/Lumberjack_hut.webp">
+			</div>
+			<div class="buildingTabData">
+				<p class="resourcesProductionInfoWood" id="woodPerMinuteInfo">0</p>
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelWood"></p>
+				<button id="upgradeWoodButtonMainCenterInfo" type="button">Upgrade</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>
+				Used in the production of wood, lumber camps are of primary importance to all emerging and established empires.
+				</p>	
+			</div>
+	</div>
+
+
+	<div id="stoneCutter_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>
+				Stonemason's hut
+			</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/Stone_masons_hut.webp">
+			</div>
+			<div class="buildingTabData">
+				<p class="resourcesProductionInfoStone" id="stonePerMinuteInfo">0</p>
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelStone"></p>
+				<button id="upgradeStoneButtonMainCenterInfo" type="button">Upgrade</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Used to produce stone which is required for most structures.</p>
+			</div>
+	</div>
+
+
+
+	<div id="ironSmelter_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			Tool smith
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/Iron_smelter.webp">
+			</div>
+			<div class="buildingTabData">
+				<p class="resourcesProductionInfoTools" id="toolsPerMinuteInfo">0</p>
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools"></p>
+				<button id="upgradeToolsButtonMainCenterInfo" type="button">Upgrade</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Essential infrastructure to provide tools to build advanced buildings.</p>
+			</div>
+	</div>
 </div>
 
 

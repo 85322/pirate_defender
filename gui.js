@@ -46,25 +46,25 @@ document.getElementById("menuFleet").onclick=function(){
 
 function openTabBuildings(tabNameBuildings) {
 	var i, x;
-	x = document.getElementsByClassName("mainCenterInfo");
+	x = document.getElementsByClassName("containerTabBuildings");
 	for (i = 0; i < x.length; i++) {
 	  x[i].style.display = "none";
 	}
 	document.getElementById(tabNameBuildings).style.display = "block";
   }
-  
-document.getElementById("woodCutter_tooltip").onclick=function () {
-	document.getElementById("woodCutter_iconDetailTab").style.display="block";
+ 
+	document.getElementById("woodCutter_tooltip").onclick=function () {
+		openTabBuildings('woodCutter_iconDetailTab');
 }
 
-document.getElementById("stoneCutter_tooltip").onclick=function () {
-	document.getElementById("stoneCutter_iconDetailTab").style.display="block";
+	document.getElementById("ironSmelter_tooltip").onclick=function () {
+		openTabBuildings('ironSmelter_iconDetailTab');
 }
 
-document.getElementById("ironSmelter_tooltip").onclick=function () {
-	document.getElementById("ironSmelter_iconDetailTab").style.display="block";
+	document.getElementById("stoneCutter_tooltip").onclick=function () {
+		openTabBuildings('stoneCutter_iconDetailTab');
 }
-//noch nicht in der funktion drin
+
 
 //KEYBINDS
 
