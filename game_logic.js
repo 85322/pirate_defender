@@ -1,4 +1,35 @@
-(function (){
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+function timer() {
+    var fiveMinutes = 60 * 5,
+        display = document.getElementById("timer");
+    startTimer(fiveMinutes, display);
+};
+
+document.getElementById("startButton").onclick = function() {
+	startButton.disabled = true;
+	timer();
+	application();
+}
+
+
+
+function application(){
 
 let woodBuildingLevel = 0;
 let stoneBuildingLevel = 0;
@@ -6,15 +37,15 @@ let ironBuildingLevel = 0;
 
 let wood = 100;
 let stone = 100;
-let iron = 0;
+let tools = 0;
 
-let resources_array = [wood,stone,iron];
+let resources_array = [wood,stone,tools];
 
 
 //WOOD UPGRADE
 function upgradeWood(){ 
 
-	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
+	if (resources_array[0] > 60 * woodBuildingLevel&& resources_array[1] > 15 * woodBuildingLevel) {
 
 		let result_wood = Math.floor(resources_array[0] - 60 * woodBuildingLevel);
 		let result_stone = Math.floor(resources_array[1] - 15 * woodBuildingLevel);
@@ -24,11 +55,12 @@ function upgradeWood(){
 
 			woodBuildingLevel += 1;
 
-			document.getElementById("woodPara").innerHTML = woodBuildingLevel;
+			document.getElementById("woodPara").innerHTML = "Level " + woodBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = woodBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelWood").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML = resources_array[0];
 			document.getElementById("resource_stone").innerHTML =  resources_array[1];
+			resourcesNextLevelWoodRequiredCalc();
 		}
 	 else {
 		console.log("Not enough resources.");
@@ -42,7 +74,7 @@ document.getElementById("upgradeWoodButtonMainCenterInfo").onclick=function (){
 //STONE UPGRADE
 function upgradeStone(){
 
-	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
+	if (resources_array[0] > 45 * stoneBuildingLevel&& resources_array[1] > 22 * stoneBuildingLevel) {
 
 		let result_wood = Math.floor(resources_array[0] - 45 * stoneBuildingLevel);
 		let result_stone = Math.floor(resources_array[1] - 22 * stoneBuildingLevel);
@@ -52,12 +84,13 @@ function upgradeStone(){
 
 			stoneBuildingLevel += 1;
 
-			document.getElementById("stonePara").innerHTML = stoneBuildingLevel;
+			document.getElementById("stonePara").innerHTML = "Level " + stoneBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = stoneBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("stonePara").innerHTML = stoneBuildingLevel;
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			resourcesNextLevelStoneRequiredCalc();
 		}
 	 else {
 		console.log("Not enough resources.");
@@ -68,7 +101,7 @@ document.getElementById("upgradeStoneButtonMainCenterInfo").onclick=function(){
 	upgradeStone();
 }
 
-//IRON UPGRADE
+//TOOLS UPGRADE
 function upgradeIron(){
 
 	if (resources_array[0] > 225 * ironBuildingLevel && resources_array[1] > 112 * ironBuildingLevel) {
@@ -81,12 +114,13 @@ function upgradeIron(){
 
 			ironBuildingLevel += 1;
 
-			document.getElementById("ironPara").innerHTML = ironBuildingLevel;
+			document.getElementById("ironPara").innerHTML = "Level " + ironBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = ironBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelTools").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("ironPara").innerHTML = ironBuildingLevel;
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			resourcesNextLevelToolsRequiredCalc();
 		}
 	 else {
 		console.log("Not enough resources.");
@@ -97,7 +131,46 @@ document.getElementById("upgradeToolsButtonMainCenterInfo").onclick=function(){
 	upgradeIron();
 }
 
+//REQUIRED RESOURCES INFO DISPLAY
 
+let resourceNextLevelArray = [wood, stone, tools];
+
+function resourcesNextLevelWoodRequiredCalc() {
+	wood = Math.floor(60 * woodBuildingLevel); 
+	stone = Math.floor(15 * woodBuildingLevel);	
+	tools = Math.floor(0 * woodBuildingLevel);
+
+	resourceNextLevelArray[0] = wood;
+	resourceNextLevelArray[1] = stone;
+	resourceNextLevelArray[2] = tools;
+
+	document.getElementById("mainCenterInfoNextLevelWoodRequiredResources").innerHTML = "Wood : " + resourceNextLevelArray[0] + " Stone: " + resourceNextLevelArray[1] + " Tools: " + resourceNextLevelArray[2] ;	
+}
+
+function resourcesNextLevelStoneRequiredCalc() {
+	wood = Math.floor(45 * woodBuildingLevel); 
+	stone = Math.floor(22 * woodBuildingLevel);	
+	tools = Math.floor(0 * woodBuildingLevel);
+
+	resourceNextLevelArray[0] = wood;
+	resourceNextLevelArray[1] = stone;
+	resourceNextLevelArray[2] = tools;
+
+	document.getElementById("mainCenterInfoNextLevelStoneRequiredResources").innerHTML = "Wood : " + resourceNextLevelArray[0] + " Stone: " + resourceNextLevelArray[1] + " Tools: " + resourceNextLevelArray[2] ;
+	
+}
+
+function resourcesNextLevelToolsRequiredCalc() {
+	wood = Math.floor(225 * woodBuildingLevel); 
+	stone = Math.floor(112 * woodBuildingLevel);	
+	tools = Math.floor(0 * woodBuildingLevel);
+
+	resourceNextLevelArray[0] = wood;
+	resourceNextLevelArray[1] = stone;
+	resourceNextLevelArray[2] = tools;
+
+	document.getElementById("mainCenterInfoNextLevelToolsRequiredResources").innerHTML = "Wood : " + resourceNextLevelArray[0] + " Stone: " + resourceNextLevelArray[1] + " Tools: " + resourceNextLevelArray[2] ;
+}
 
 
 //UPGRADE ICONS CHECK
@@ -180,24 +253,55 @@ function production_iron(){
 
 
 //TEST AREA
-/*
-function getBuildingLevel {
 
-let woodParaNumber = document.getElementById("woodPara").innerHTML;
+ship1 = 0;
+ship2 = 0;
+ship3 = 0;
+tower1 = 0;
+tower2 = 0;
 
+let militaryArrayPlayer = [ship1, ship2, ship3, tower1, tower2];
+
+function ship1Constructor() {
+	if (resources_array[0] > 100 && resources_array[1] > 100 && resources_array[2] > 25 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 100);
+		let result_stone = Math.floor(resources_array[1] - 100);
+		let result_tools = Math.floor(resources_array[2] - 25);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		militaryArrayPlayer[0] += 1;
+
+			document.getElementById("ship1Number").innerHTML = militaryArrayPlayer[0];
+			//let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = stoneBuildingLevel + 1;
+			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
+			//document.getElementById("stonePara").innerHTML = stoneBuildingLevel;
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+			//resourcesNextLevelStoneRequiredCalc();
+		}
+	 else {
+		console.log("Not enough resources.");
+	}
 }
 
-function nextBuildingLevelDisplay() {
-	let buildingsLevelArray = [woodParaNumber];
-	document.getElementById("mainCenterInfoNextLevelWood").innerHTML = buildingsLevelArray[0];
+document.getElementById("ship1ConstructorImage").onclick=function(){
+	ship1Constructor();
 }
-window.setInterval(nextBuildingLevelDisplay, 1000);
-*/
+
+
+
+
+
 
 
  //RESOURCE STATISTICS
 
-let resourceArrayStatisticMinute = [wood, stone, iron];
+let resourceArrayStatisticMinute = [wood, stone, tools];
 
 function resourceMenuCalcProductionMinute(){
 	let productionWood = Math.floor(3 * woodBuildingLevel * 1,1);
@@ -273,6 +377,9 @@ function mapGenerationRandomizer() {
 	 ;
  }
  */
+
+ //MISC
+
  	function mapReset() {
 	location.reload();	 
 	}
@@ -287,4 +394,4 @@ function mapGenerationRandomizer() {
 
 
 
-}());
+};

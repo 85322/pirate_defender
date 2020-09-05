@@ -13,17 +13,29 @@ body, a {
 		margin: 3px;
 }
 
+#military {
+	background-color: black;
+	margin-bottom: 0px;		
+	width: 700px;
+	margin: 3px;
+	
+}
+
+#military li {
+	background-color: black;
+	cursor: pointer;
+	margin: 3px;
+	height: 93px;
+	width: 93px;
+}
+
 #buildings li {
 	background-color: black;
 	cursor: pointer;
 	margin: 3px;
 	height: 93px;
 	width: 93px;
-
-	
 }
-
-
 #buildingsNav {
 	background-color: brown;
 	position: fixed;
@@ -31,8 +43,10 @@ body, a {
 	
 }
 
-#woodPara {
-	position: right;
+#militaryNav {
+
+	bottom: 20px;
+	
 }
 
 
@@ -160,4 +174,20 @@ body, a {
 .buildingTabFooter {
 	font-size: 22px;
 	background: purple;
+}
+
+.bottomTimer {
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	display: grid;
+	place-items: center;
+	position: absolute;
+	bottom: 100px;
+	right: 0px;
+}
+
+#startButton {
+	height: 100%;
+	width: 100%;
 }

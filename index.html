@@ -28,10 +28,10 @@
 	<nav id="buildings">
 		<ul>
 			<li>Buildings</li>
-			<li id="woodCutter_tooltip"><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"><span id="woodPara">0</span></li>
-			<li id="stoneCutter_tooltip"><img id="stoneCutter_icon" src="images/stonecutter_icon.png"><span id="stonePara">0</span></li>
-			<li id="ironSmelter_tooltip"><img id="ironSmelter_icon" src="images/smelter_
-			icon.png"><span id="ironPara">0</span></li>
+			<li id="woodCutter_tooltip"><span id="woodPara">Level 0</span><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"></li>
+			<li id="stoneCutter_tooltip"><span id="stonePara">Level 0</span><img id="stoneCutter_icon" src="images/stonecutter_icon.png"></li>
+			<li id="ironSmelter_tooltip"><span id="ironPara">Level 0</span><img id="ironSmelter_icon" src="images/smelter_
+			icon.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -67,12 +67,16 @@
 	</nav>
 </div>
 
-<!-- DEFENCE  -->
-<div id="defenceNav" class="containerTab">
-	<nav>
+<!-- MILITARY  -->
+<div id="militaryNav" class="containerTab">
+	<nav id="military">
 		<ul>
-			<li>Defence</li>
-			<li>asd</li>
+			<li>Military</li>
+			<li id="ship1Tooltip"><span id="ship1Number">0x</span><img id="ship1ConstructorImage" src="images/icons/Ship1.png"></li>
+			<li id="ship2Tooltip"><span id="ship2Number">0x</span><img src="images/icons/Ship2.png"></li>
+			<li id="ship3Tooltip"><span id="ship3Number">0x</span><img src="images/icons/Ship3.png"></li>
+			<li id="tower1Tooltip"><span id="tower1Number">0x</span><img src="images/icons/Tower1.png"></li>
+			<li id="tower2Tooltip"><span id="tower2Number">0x</span><img src="images/icons/Tower2.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -116,37 +120,14 @@
 	</div> 
 </div>
 
-<!-- SHIPYARD  -->
-<div id="shipyardNav" class="containerTab">
-	<nav>
-		<ul>
-			<li>Shipyard</li>
-			<li>asd</li>
-		</ul>
-	</nav>
-</div>
-
-<!-- FLEET  -->
-<div id="fleetNav" class="containerTab">
-	<nav>
-		<ul>
-			<li>Fleet</li>
-			<li>asd</li>
-		</ul>
-	</nav>
-</div>
-
-
 <div id="mainMenuRight">
 	<ul>
 		<li id="menuBuildings">Buildings</li>
 		<li id="menuResources">Resources</li>
 		<li id="menuFacilities">Facilities</li>
 		<li id="menuResearch">Research</li>
-		<li id="menuDefence">Defence</li>
+		<li id="menuMilitary">Military</li>
 		<li id="menuMap">Map</li>
-		<li id="menuShipyard">Shipyard</li>
-		<li id="menuFleet">Fleet</li>
 		<li id="menuReset">RESET MAP</li>
 	</ul>
 </div>
@@ -163,6 +144,7 @@
 			<div class="buildingTabData">
 				<p class="resourcesProductionInfoWood" id="woodPerMinuteInfo">0</p>
 				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelWood"></p>
+				<p id="mainCenterInfoNextLevelWoodRequiredResources"></p>
 				<button id="upgradeWoodButtonMainCenterInfo" type="button">Upgrade</button>
 			</div>
 			<div class="buildingTabFooter">
@@ -185,6 +167,7 @@
 			<div class="buildingTabData">
 				<p class="resourcesProductionInfoStone" id="stonePerMinuteInfo">0</p>
 				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelStone"></p>
+				<p id="mainCenterInfoNextLevelStoneRequiredResources"></p>
 				<button id="upgradeStoneButtonMainCenterInfo" type="button">Upgrade</button>
 			</div>
 			<div class="buildingTabFooter">
@@ -204,6 +187,7 @@
 			<div class="buildingTabData">
 				<p class="resourcesProductionInfoTools" id="toolsPerMinuteInfo">0</p>
 				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools"></p>
+				<p id="mainCenterInfoNextLevelToolsRequiredResources"></p>
 				<button id="upgradeToolsButtonMainCenterInfo" type="button">Upgrade</button>
 			</div>
 			<div class="buildingTabFooter">
@@ -212,7 +196,10 @@
 	</div>
 </div>
 
-
+<div class="bottomTimer">
+<li><p id="timer"></p></li>
+<button id="startButton">START</button>
+</div>
 
 <script src="game_logic.js"></script>	
 <script src="gui.js"></script>

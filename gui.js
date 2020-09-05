@@ -25,21 +25,14 @@ document.getElementById("menuResearch").onclick=function(){
 	openTab('researchNav');
 }
 
-document.getElementById("menuDefence").onclick=function(){
-	openTab('defenceNav');
+document.getElementById("menuMilitary").onclick=function(){
+	openTab('militaryNav');
 }
 
 document.getElementById("menuMap").onclick=function(){
 	openTab('mapNav');
 }
 
-document.getElementById("menuShipyard").onclick=function(){
-	openTab('shipyardNav');
-}
-
-document.getElementById("menuFleet").onclick=function(){
-	openTab('fleetNav');
-}
 
 
 //BUILDING DETAIL TABS
@@ -69,11 +62,16 @@ function openTabBuildings(tabNameBuildings) {
 //KEYBINDS
 
 const Action = {
-	help()    { console.log(window.alert("Help string")) },
+	help()    {(window.alert("F1 - Helpscreen \n" + "F4 - Reset")) },
+	reset(){
+		(window.alert("Restarting game"))
+		location.reload();
+	}
   };
   
   const keyAction = {
 	F1: { keydown: Action.help},
+	F4: { keydown: Action.reset}
   };
   
   const keyHandler = (ev) => {
