@@ -27,6 +27,11 @@ body, a {
 	margin: 3px;
 	height: 93px;
 	width: 93px;
+	border-radius: 10px;
+}
+
+#military li:hover {
+	border-color: yellow;
 }
 
 #buildings li {
@@ -35,6 +40,11 @@ body, a {
 	margin: 3px;
 	height: 93px;
 	width: 93px;
+	border-radius: 10px;
+}
+
+#buildings li:hover {
+	border-color: yellow;
 }
 #buildingsNav {
 	background-color: brown;
@@ -94,7 +104,7 @@ body, a {
 }
 
 #mainMenuRight li:hover {	
-	transform: scale(1.2);
+	background-color: red;
   }
 
 

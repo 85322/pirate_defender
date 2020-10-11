@@ -58,11 +58,33 @@ function openTabBuildings(tabNameBuildings) {
 		openTabBuildings('stoneCutter_iconDetailTab');
 }
 
+	document.getElementById("ship1ConstructorImage").onclick=function () {
+		openTabBuildings('ship1_iconDetailTab');
+}
+
+	document.getElementById("ship2ConstructorImage").onclick=function () {
+		openTabBuildings('ship2_iconDetailTab');
+}
+
+	document.getElementById("ship3ConstructorImage").onclick=function () {
+		openTabBuildings('ship3_iconDetailTab');
+}
+
+	document.getElementById("tower1ConstructorImage").onclick=function () {
+		openTabBuildings('tower1_iconDetailTab');
+}
+
+	document.getElementById("tower2ConstructorImage").onclick=function () {
+		openTabBuildings('tower2_iconDetailTab');
+}
 
 //KEYBINDS
 
 const Action = {
-	help()    {(window.alert("F1 - Helpscreen \n" + "F4 - Reset")) },
+	help()    {
+		(window.alert("F1 - Helpscreen \n" + "F4 - Reset")) 
+	},
+	
 	reset(){
 		(window.alert("Restarting game"))
 		location.reload();

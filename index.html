@@ -73,10 +73,10 @@
 		<ul>
 			<li>Military</li>
 			<li id="ship1Tooltip"><span id="ship1Number">0x</span><img id="ship1ConstructorImage" src="images/icons/Ship1.png"></li>
-			<li id="ship2Tooltip"><span id="ship2Number">0x</span><img src="images/icons/Ship2.png"></li>
-			<li id="ship3Tooltip"><span id="ship3Number">0x</span><img src="images/icons/Ship3.png"></li>
-			<li id="tower1Tooltip"><span id="tower1Number">0x</span><img src="images/icons/Tower1.png"></li>
-			<li id="tower2Tooltip"><span id="tower2Number">0x</span><img src="images/icons/Tower2.png"></li>
+			<li id="ship2Tooltip"><span id="ship2Number">0x</span><img id="ship2ConstructorImage" src="images/icons/Ship2.png"></li>
+			<li id="ship3Tooltip"><span id="ship3Number">0x</span><img id="ship3ConstructorImage" src="images/icons/Ship3.png"></li>
+			<li id="tower1Tooltip"><span id="tower1Number">0x</span><img id="tower1ConstructorImage" src="images/icons/Tower1.png"></li>
+			<li id="tower2Tooltip"><span id="tower2Number">0x</span><img id="tower2ConstructorImage" src="images/icons/Tower2.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -194,12 +194,105 @@
 				<p>Essential infrastructure to provide tools to build advanced buildings.</p>
 			</div>
 	</div>
+
+	<div id="ship1_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Ship1</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/icons/Ship1.png">
+			</div>
+			<div class="buildingTabData">
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoCostShip1">
+					Wood : 100 Stone: 0 Tools: 25
+				</p>
+				<button id="constructShip1ButtonMainCenterInfo" type="button">Construct</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Ship1 info.</p>
+			</div>
+	</div>
+
+	<div id="ship2_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Ship2</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/icons/Ship2.png">
+			</div>
+			<div class="buildingTabData">
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools">
+					Wood : 150 Stone: 0 Tools: 35 
+				</p>
+				<button id="constructShip2ButtonMainCenterInfo" type="button">Construct</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Ship2 info.</p>
+			</div>
+	</div>
+
+	<div id="ship3_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Ship3</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/icons/Ship3.png">
+			</div>
+			<div class="buildingTabData">
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools">
+					Wood : 200 Stone: 0 Tools: 60
+				</p>
+				<button id="constructShip3ButtonMainCenterInfo" type="button">Construct</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Ship3 info.</p>
+			</div>
+	</div>
+
+	<div id="tower1_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Tower1</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/icons/Tower1.png">
+			</div>
+			<div class="buildingTabData">
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools">
+					Wood : 50 Stone: 200 Tools: 20
+				</p>
+				<button id="constructTower1ButtonMainCenterInfo" type="button">Construct</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Tower1 info.</p>
+			</div>
+	</div>
+
+	<div id="tower2_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Tower2</p>
+		</div>
+			<div class="buildingTabMain">
+				<img id="containerTabBuildingsImage" src="images/icons/Tower2.png">
+			</div>
+			<div class="buildingTabData">
+				<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools">
+					Wood : 75 Stone: 300 Tools: 30
+				</p>
+				<button id="constructTower2ButtonMainCenterInfo" type="button">Construct</button>
+			</div>
+			<div class="buildingTabFooter">
+				<p>Tower2 info.</p>
+			</div>
+	</div>
 </div>
 
 <div class="bottomTimer">
 <li><p id="timer"></p></li>
 <button id="startButton">START</button>
+<button id="startCombatButton">Combat</button>
+<button id="combatArrayTestButton">ArraytestCombat</button>
 </div>
+
 
 <script src="game_logic.js"></script>	
 <script src="gui.js"></script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>combat test</h1>
+<button id="btn">Fight</button>
+<button id="btn2">Calc</button>
+<button id="btn3">FightDoWhile</button>
+<button id="btn4">ArrayFight</button>
+</body>
+
+<script>
+
+//let values = [player.hp, player.attack, opponent.hp, opponent.attack];
+//console.log(values[0]);
+
+let num = 100;
+function combat(){
+    while (num > 0) {
+        num ;
+        console.log(num);
+        //opponent.hp + player.attack;
+        //player.hp - opponent.hp;
+        //console.log(opponent.hp);
+        //return;
+}
+};
+
+function combat2(){
+while (num > 0) {
+    num--;
+    console.log(num);
+}
+};
+
+
+function addition(){
+    let num1 = 2;
+    let num2 = 5;
+    console.log(num1 + num2 + " is the result.")
+};
+
+function combatArray(){
+    let player = {hp:150, attack:25};
+    let opponent = {hp:100, attack:20};
+
+    while (player.hp && opponent.hp > 0) {
+        player.hp -= opponent.attack;
+        opponent.hp -= player.attack;
+        console.log("Opponent.hp: " + opponent.hp + "\nPlayer.hp: " + player.hp);
+    }
+    return;
+}
+
+document.getElementById("btn").onclick=function(){
+    combat();
+}
+
+document.getElementById("btn2").onclick=function(){
+    addition();
+}
+
+document.getElementById("btn3").onclick=function(){
+    combat2();
+}
+
+document.getElementById("btn4").onclick=function(){
+    combatArray();
+}
+
+</script>
+</html>

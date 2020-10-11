@@ -35,9 +35,9 @@ let woodBuildingLevel = 0;
 let stoneBuildingLevel = 0;
 let ironBuildingLevel = 0;
 
-let wood = 100;
-let stone = 100;
-let tools = 0;
+let wood = 1000;
+let stone = 1000;
+let tools = 1000;
 
 let resources_array = [wood,stone,tools];
 
@@ -45,7 +45,7 @@ let resources_array = [wood,stone,tools];
 //WOOD UPGRADE
 function upgradeWood(){ 
 
-	if (resources_array[0] > 60 * woodBuildingLevel&& resources_array[1] > 15 * woodBuildingLevel) {
+	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
 
 		let result_wood = Math.floor(resources_array[0] - 60 * woodBuildingLevel);
 		let result_stone = Math.floor(resources_array[1] - 15 * woodBuildingLevel);
@@ -74,7 +74,7 @@ document.getElementById("upgradeWoodButtonMainCenterInfo").onclick=function (){
 //STONE UPGRADE
 function upgradeStone(){
 
-	if (resources_array[0] > 45 * stoneBuildingLevel&& resources_array[1] > 22 * stoneBuildingLevel) {
+	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
 
 		let result_wood = Math.floor(resources_array[0] - 45 * stoneBuildingLevel);
 		let result_stone = Math.floor(resources_array[1] - 22 * stoneBuildingLevel);
@@ -252,21 +252,21 @@ function production_iron(){
 }
 
 
-//TEST AREA
+//MILITARY
 
-ship1 = 0;
-ship2 = 0;
-ship3 = 0;
-tower1 = 0;
-tower2 = 0;
+let ship1 = {hp:150, attack:25, amount:0};
+let ship2 = {hp:225, attack:40, amount:0};
+let ship3 = {hp:350, attack:65, amount:0}
+let tower1 = {hp:325, attack:20, amount:0}
+let tower2 = {hp:500, attack:40, amount:0}
 
-let militaryArrayPlayer = [ship1, ship2, ship3, tower1, tower2];
+let militaryArrayPlayer = [ship1.amount, ship2.amount, ship3.amount, tower1.amount, tower2.amount];
 
 function ship1Constructor() {
-	if (resources_array[0] > 100 && resources_array[1] > 100 && resources_array[2] > 25 ) {
+	if (resources_array[0] > 100 && resources_array[1] > 0 && resources_array[2] > 25 ) {
 
 		let result_wood = Math.floor(resources_array[0] - 100);
-		let result_stone = Math.floor(resources_array[1] - 100);
+		let result_stone = Math.floor(resources_array[1] - 0);
 		let result_tools = Math.floor(resources_array[2] - 25);
 
 		resources_array[0] = result_wood;
@@ -275,29 +275,159 @@ function ship1Constructor() {
 
 		militaryArrayPlayer[0] += 1;
 
-			document.getElementById("ship1Number").innerHTML = militaryArrayPlayer[0];
-			//let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = stoneBuildingLevel + 1;
-			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
-			//document.getElementById("stonePara").innerHTML = stoneBuildingLevel;
+			document.getElementById("ship1Number").innerHTML = militaryArrayPlayer[0] + "x";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
 			document.getElementById("resource_iron").innerHTML = resources_array[2];
-			//resourcesNextLevelStoneRequiredCalc();
 		}
 	 else {
 		console.log("Not enough resources.");
 	}
 }
 
-document.getElementById("ship1ConstructorImage").onclick=function(){
+document.getElementById("constructShip1ButtonMainCenterInfo").onclick=function(){
 	ship1Constructor();
+}
+
+function ship2Constructor() {
+	if (resources_array[0] > 150 && resources_array[1] > 0 && resources_array[2] > 35 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 150);
+		let result_stone = Math.floor(resources_array[1] - 0);
+		let result_tools = Math.floor(resources_array[2] - 35);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		militaryArrayPlayer[1] += 1;
+
+			document.getElementById("ship2Number").innerHTML = militaryArrayPlayer[1] + "x";
+			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		}
+	 else {
+		console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("constructShip2ButtonMainCenterInfo").onclick=function(){
+	ship2Constructor();
+}
+
+function ship3Constructor() {
+	if (resources_array[0] > 200 && resources_array[1] > 0 && resources_array[2] > 60 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 200);
+		let result_stone = Math.floor(resources_array[1] - 0);
+		let result_tools = Math.floor(resources_array[2] - 60);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		militaryArrayPlayer[2] += 1;
+
+			document.getElementById("ship3Number").innerHTML = militaryArrayPlayer[2] + "x";
+			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		}
+	 else {
+		console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("constructShip3ButtonMainCenterInfo").onclick=function(){
+	ship3Constructor();
+}
+
+
+function tower1Constructor() {
+	if (resources_array[0] > 50 && resources_array[1] > 200 && resources_array[2] > 20 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 50);
+		let result_stone = Math.floor(resources_array[1] - 200);
+		let result_tools = Math.floor(resources_array[2] - 20);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		militaryArrayPlayer[3] += 1;
+
+			document.getElementById("tower1Number").innerHTML = militaryArrayPlayer[3] + "x";
+			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		}
+	 else {
+		console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("constructTower1ButtonMainCenterInfo").onclick=function(){
+	tower1Constructor();
+}
+
+
+function tower2Constructor() {
+	if (resources_array[0] > 75 && resources_array[1] > 300 && resources_array[2] > 30 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 75);
+		let result_stone = Math.floor(resources_array[1] - 300);
+		let result_tools = Math.floor(resources_array[2] - 30);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		militaryArrayPlayer[4] += 1;
+
+			document.getElementById("tower2Number").innerHTML = militaryArrayPlayer[4] + "x";
+			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		}
+	 else {
+		console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("constructTower2ButtonMainCenterInfo").onclick=function(){
+	tower2Constructor();
 }
 
 
 
+//TEST AREA
+
+let player = {hp:150, attack:25};
+let opponent = {hp:100, attack:20};
+
+function combatArray(){
 
 
+    while (player.hp && opponent.hp > 0) {
+        player.hp -= opponent.attack;
+        opponent.hp -= player.attack;
+        console.log("Opponent.hp: " + opponent.hp + "\nPlayer.hp: " + player.hp);
+    }
+    return;
+}
 
+document.getElementById("startCombatButton").onclick=function(){
+	combatArray();
+}
+
+document.getElementById("combatArrayTestButton").onclick=function(){
+	console.log(militaryArrayPlayer[0]);
+}
 
  //RESOURCE STATISTICS
 
