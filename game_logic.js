@@ -1,5 +1,17 @@
+document.getElementById("startButton").onclick = function() {
+	startButton.disabled = true;
+	application();
+}
+
+
+function application(){
+
+//TIMER
+
+alert("Welcome, build stuff and defend", timer());
+
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+    let timer = duration, minutes, seconds;
     setInterval(function () {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
@@ -10,39 +22,35 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            timer = duration;
+			timer = duration;
+			combatArray();
         }
-    }, 1000);
+	}, 1000);
 }
 
 function timer() {
-    var fiveMinutes = 60 * 5,
+    let Minutes = 60 * 0.2,
         display = document.getElementById("timer");
-    startTimer(fiveMinutes, display);
+    startTimer(Minutes, display);
 };
 
-document.getElementById("startButton").onclick = function() {
-	startButton.disabled = true;
-	timer();
-	application();
-}
 
-
-
-function application(){
+//GENERAL RESOURCES
 
 let woodBuildingLevel = 0;
 let stoneBuildingLevel = 0;
 let ironBuildingLevel = 0;
 
-let wood = 1000;
-let stone = 1000;
-let tools = 1000;
+let wood = 10000;
+let stone = 10000;
+let tools = 10000;
 
 let resources_array = [wood,stone,tools];
 
 
 //WOOD UPGRADE
+//prüfen ob resourcen reichen aus array, dann preis * current lvl, in zwischenarray, dann ausgabe
+
 function upgradeWood(){ 
 
 	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
@@ -72,6 +80,7 @@ document.getElementById("upgradeWoodButtonMainCenterInfo").onclick=function (){
 }
 
 //STONE UPGRADE
+
 function upgradeStone(){
 
 	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
@@ -102,6 +111,7 @@ document.getElementById("upgradeStoneButtonMainCenterInfo").onclick=function(){
 }
 
 //TOOLS UPGRADE
+
 function upgradeIron(){
 
 	if (resources_array[0] > 225 * ironBuildingLevel && resources_array[1] > 112 * ironBuildingLevel) {
@@ -131,7 +141,9 @@ document.getElementById("upgradeToolsButtonMainCenterInfo").onclick=function(){
 	upgradeIron();
 }
 
+
 //REQUIRED RESOURCES INFO DISPLAY
+//preis mal current building level für nächste stufe
 
 let resourceNextLevelArray = [wood, stone, tools];
 
@@ -256,11 +268,12 @@ function production_iron(){
 
 let ship1 = {hp:150, attack:25, amount:0};
 let ship2 = {hp:225, attack:40, amount:0};
-let ship3 = {hp:350, attack:65, amount:0}
-let tower1 = {hp:325, attack:20, amount:0}
-let tower2 = {hp:500, attack:40, amount:0}
+let ship3 = {hp:350, attack:65, amount:0};
+let tower1 = {hp:325, attack:20, amount:0};
+let tower2 = {hp:500, attack:40, amount:0};
 
 let militaryArrayPlayer = [ship1.amount, ship2.amount, ship3.amount, tower1.amount, tower2.amount];
+
 
 function ship1Constructor() {
 	if (resources_array[0] > 100 && resources_array[1] > 0 && resources_array[2] > 25 ) {
@@ -303,7 +316,6 @@ function ship2Constructor() {
 		militaryArrayPlayer[1] += 1;
 
 			document.getElementById("ship2Number").innerHTML = militaryArrayPlayer[1] + "x";
-			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
 			document.getElementById("resource_iron").innerHTML = resources_array[2];
@@ -331,7 +343,6 @@ function ship3Constructor() {
 		militaryArrayPlayer[2] += 1;
 
 			document.getElementById("ship3Number").innerHTML = militaryArrayPlayer[2] + "x";
-			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
 			document.getElementById("resource_iron").innerHTML = resources_array[2];
@@ -360,7 +371,6 @@ function tower1Constructor() {
 		militaryArrayPlayer[3] += 1;
 
 			document.getElementById("tower1Number").innerHTML = militaryArrayPlayer[3] + "x";
-			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
 			document.getElementById("resource_iron").innerHTML = resources_array[2];
@@ -389,7 +399,6 @@ function tower2Constructor() {
 		militaryArrayPlayer[4] += 1;
 
 			document.getElementById("tower2Number").innerHTML = militaryArrayPlayer[4] + "x";
-			//document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
 			document.getElementById("resource_stone").innerHTML = resources_array[1];
 			document.getElementById("resource_iron").innerHTML = resources_array[2];
@@ -407,26 +416,79 @@ document.getElementById("constructTower2ButtonMainCenterInfo").onclick=function(
 
 //TEST AREA
 
-let player = {hp:150, attack:25};
-let opponent = {hp:100, attack:20};
 
+//COMBAT SYSTEM
+
+/*
+let ship1 = {hp:150, attack:25, amount:0};
+let ship2 = {hp:225, attack:40, amount:0};
+let ship3 = {hp:350, attack:65, amount:0};
+let tower1 = {hp:325, attack:20, amount:0};
+let tower2 = {hp:500, attack:40, amount:0};
+*/
+
+let opponentTotalHealth = [2000]; 
+let opponentTotalAttack = [40];
+let currentLevel = 1;
+
+//weil properties multiplizieren zu schwer ist für JS. amount * atk/hp, for array summe = total atk/hp
 function combatArray(){
 
+	let playerTotalHealth = 0;
+	
+	let militaryArrayTotalHealth = [militaryArrayPlayer[0] * 150, militaryArrayPlayer[1] * 225, militaryArrayPlayer[2] * 350, militaryArrayPlayer[3] * 325, militaryArrayPlayer[4] * 500]; 
+	
+	for(var i in militaryArrayTotalHealth) { playerTotalHealth += militaryArrayTotalHealth[i]; }
+	console.log("Total health player: " + playerTotalHealth);
 
-    while (player.hp && opponent.hp > 0) {
-        player.hp -= opponent.attack;
-        opponent.hp -= player.attack;
-        console.log("Opponent.hp: " + opponent.hp + "\nPlayer.hp: " + player.hp);
-    }
-    return;
-}
 
-document.getElementById("startCombatButton").onclick=function(){
-	combatArray();
-}
+	let militaryArrayTotalAttack = [militaryArrayPlayer[0] * 25, militaryArrayPlayer[1] * 40, militaryArrayPlayer[2] * 65, militaryArrayPlayer[3] * 20, militaryArrayPlayer[4] * 40];
 
-document.getElementById("combatArrayTestButton").onclick=function(){
-	console.log(militaryArrayPlayer[0]);
+	let playerTotalAttack = 0;
+
+	for(var i in militaryArrayTotalAttack) { playerTotalAttack += militaryArrayTotalAttack[i]; }
+	console.log("Total attack player: " + playerTotalAttack);
+
+
+	
+	let combatTextArray = []; //nimmt mit .push daten aus while, gibt mit .join als string wieder
+
+	combatTextArray.push("Opponent total hp: " + opponentTotalHealth[0] + "\nPlayer total hp: " + playerTotalHealth);
+
+    while (playerTotalHealth && opponentTotalHealth[0] > 0) {
+
+		
+        playerTotalHealth -= opponentTotalAttack[0];
+		opponentTotalHealth[0] -= playerTotalAttack;
+		console.log("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
+		combatTextArray.push("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
+	}
+
+	if (playerTotalHealth < 1 ) {
+		console.log("Defeat!");
+		alert("Combat results:")
+		alert(combatTextArray.join("\n\n"));
+		alert("Defeat!");
+		location.reload();
+		
+
+	} else if (opponentTotalHealth[0] < 1 ) {
+		console.log("YOU WIN!");
+		alert("Combat results:")
+		alert(combatTextArray.join("\n\n"));
+
+		if (currentLevel > 4) {
+			alert("You defeated the pirates!\nVictory!");
+			location.reload();
+
+		} else {
+			currentLevel +=1 ;
+			document.getElementById("menuCurrentLevelDisplay").innerHTML = ("Level: " + currentLevel);
+			alert("Victory!\n\nTo the next challenge!\n\n");
+			opponentTotalHealth = opponentTotalHealth.map(function(val){return opponentTotalHealth=3000;});
+			opponentTotalAttack = opponentTotalAttack.map(function(val){return opponentTotalAttack*2;});
+			}
+		}
 }
 
  //RESOURCE STATISTICS
@@ -473,6 +535,7 @@ function resourceMenuCalcProductionMinute(){
 		  x[i].innerHTML = resourceArrayStatisticMinute[2] + " Tools / min";
 		};
 	}
+
 
 
 //MAP GENERATION

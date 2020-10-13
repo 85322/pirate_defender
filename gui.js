@@ -1,5 +1,5 @@
 //RIGHT SIDE NAV TABS
-
+//alle tabs der klasse display none, ausser das ausgewählte display block
 function openTab(tabName) {
   var i, x;
   x = document.getElementsByClassName("containerTab");
@@ -33,6 +33,10 @@ document.getElementById("menuMap").onclick=function(){
 	openTab('mapNav');
 }
 
+document.getElementById("menuHelp").onclick=function(){
+	openTab('helpNav');
+	alert("F1 = Help screen \n\nF4 = Reset \n\nGeneral tips: Build up your economy first, then invest into military.");
+}
 
 
 //BUILDING DETAIL TABS
@@ -82,7 +86,7 @@ function openTabBuildings(tabNameBuildings) {
 
 const Action = {
 	help()    {
-		(window.alert("F1 - Helpscreen \n" + "F4 - Reset")) 
+		(window.alert("F1 = Help screen \n\nF4 = Reset \n\nGeneral tips: Build up your economy first, then invest into military.")) 
 	},
 	
 	reset(){

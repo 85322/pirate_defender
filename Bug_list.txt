@@ -1,3 +1,5 @@
--erster level gebäudestufe keine kosten abgezogen [O]
+-erster level gebäudestufe keine kosten abgezogen [ ]
 -kosten erhöhen sich nicht [X]
--tool smith kosten falsch [0]
+-tool smith kosten falsch [ ]
+-combat system geht unter null[ ]
+-combat system benutzt beim 3. durchlauf timer() nicht [X]
