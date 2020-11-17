@@ -29,7 +29,7 @@ function startTimer(duration, display) {
 }
 
 function timer() {
-    let Minutes = 60 * 0.2,
+    let Minutes = 60 * 0.1,
         display = document.getElementById("timer");
     startTimer(Minutes, display);
 };
@@ -434,7 +434,7 @@ let currentLevel = 1;
 //weil properties multiplizieren zu schwer ist für JS. amount * atk/hp, for array summe = total atk/hp
 function combatArray(){
 
-	let playerTotalHealth = 0;
+	let playerTotalHealth = 1;
 	
 	let militaryArrayTotalHealth = [militaryArrayPlayer[0] * 150, militaryArrayPlayer[1] * 225, militaryArrayPlayer[2] * 350, militaryArrayPlayer[3] * 325, militaryArrayPlayer[4] * 500]; 
 	
@@ -444,7 +444,7 @@ function combatArray(){
 
 	let militaryArrayTotalAttack = [militaryArrayPlayer[0] * 25, militaryArrayPlayer[1] * 40, militaryArrayPlayer[2] * 65, militaryArrayPlayer[3] * 20, militaryArrayPlayer[4] * 40];
 
-	let playerTotalAttack = 0;
+	let playerTotalAttack = 1;
 
 	for(var i in militaryArrayTotalAttack) { playerTotalAttack += militaryArrayTotalAttack[i]; }
 	console.log("Total attack player: " + playerTotalAttack);
@@ -462,23 +462,22 @@ function combatArray(){
 		opponentTotalHealth[0] -= playerTotalAttack;
 		console.log("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
 		combatTextArray.push("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
-	}
 
-	if (playerTotalHealth < 1 ) {
-		console.log("Defeat!");
-		alert("Combat results:")
-		alert(combatTextArray.join("\n\n"));
-		alert("Defeat!");
-		location.reload();
-		
-
-	} else if (opponentTotalHealth[0] < 1 ) {
-		console.log("YOU WIN!");
-		alert("Combat results:")
-		alert(combatTextArray.join("\n\n"));
+		if (playerTotalHealth < 1) {
+				console.log("Defeat!");
+				alert("Combat results:")
+				alert(combatTextArray.join("\n\n"));
+				alert("Defeat!");
+				location.reload();
+		}
+	} 
+		if (opponentTotalHealth[0] < 1 ) {
+			console.log("YOU WIN!");
+			alert("Combat results:")
+			alert(combatTextArray.join("\n\n"));
 
 		if (currentLevel > 4) {
-			alert("You defeated the pirates!\nVictory!");
+			alert("You defeated the pirates!\n\nVictory!");
 			location.reload();
 
 		} else {
@@ -490,6 +489,11 @@ function combatArray(){
 			}
 		}
 }
+
+
+	
+
+
 
  //RESOURCE STATISTICS
 
@@ -549,8 +553,6 @@ function resourceMenuCalcProductionMinute(){
 	document.getElementById("mapCell1").appendChild(num);
 	
 }
-
-
 	geht, ein image bis jetzt, noch nicht random, noch kein weg alle cellIDs/class anzusprechen
 	(array alle IDs, randomizer?)
 	|
@@ -564,7 +566,6 @@ function mapGenerationRandomizer() {
 	document.getElementById('mapCell1').appendChild(img); 
 	//document.getElementById("mapCell1").innerHTML = "Image Element Added.";  
 }  
-
  document.getElementById("menuReset").onclick=function() {
 	 mapGenerationRandomizer();
 	 ;

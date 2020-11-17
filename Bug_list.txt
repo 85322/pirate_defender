@@ -1,5 +1,7 @@
 -erster level gebäudestufe keine kosten abgezogen [ ]
 -kosten erhöhen sich nicht [X]
 -tool smith kosten falsch [ ]
--combat system geht unter null[ ]
+-combat system geht unter null[X]
 -combat system benutzt beim 3. durchlauf timer() nicht [X]
+-ohne units wert 0 kein combat log [X]
+-combat kein reset nach sieg [X]
