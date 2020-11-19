@@ -29,9 +29,6 @@ document.getElementById("menuMilitary").onclick=function(){
 	openTab('militaryNav');
 }
 
-document.getElementById("menuMap").onclick=function(){
-	openTab('mapNav');
-}
 
 document.getElementById("menuHelp").onclick=function(){
 	openTab('helpNav');

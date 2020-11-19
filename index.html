@@ -15,7 +15,6 @@
 <!-- TOP NAV-->
 	<nav id="navMenuRight">
 		<ul>
-			<li>Resources</li>
 			<li><img src="images/icons/Wood.webp"><span id="resource_wood">0</span></li>
 			<li><img src="images/icons/Stone.webp"><span id="resource_stone">0</span></td></li>
 			<li><img src="images/icons/Tools.webp"><span id="resource_iron">0</span></li>
@@ -27,11 +26,9 @@
 <div id="buildingsNav" class="containerTab">
 	<nav id="buildings">
 		<ul>
-			<li>Buildings</li>
 			<li id="woodCutter_tooltip"><span id="woodPara">Level 0</span><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"></li>
-			<li id="stoneCutter_tooltip"><span id="stonePara">Level 0</span><img id="stoneCutter_icon" src="images/stonecutter_icon.png"></li>
-			<li id="ironSmelter_tooltip"><span id="ironPara">Level 0</span><img id="ironSmelter_icon" src="images/smelter_
-			icon.png"></li>
+			<li id="stoneCutter_tooltip"><span id="stonePara">Level 0</span><img id="stoneCutter_icon" src="images/icons/Stone_masons_hut_icon.png"></li>
+			<li id="ironSmelter_tooltip"><span id="ironPara">Level 0</span><img id="ironSmelter_icon" src="images/icons/Iron_smelter_icon.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -137,10 +134,12 @@
 		<li id="menuFacilities">Facilities</li>
 		<li id="menuResearch">Research</li>
 		<li id="menuMilitary">Military</li>
-		<li id="menuMap">Map</li>
-		<li id="menuReset">RESET MAP</li>
+		<li id="menuReset">Reset Map</li>
 		<li id="menuHelp">Help</li>
 		<li id="menuCurrentLevelDisplay">Level: 1</li>
+		<li><p id="timer"></p></li>
+ 		<li id="startButton">START</li>
+		
 	</ul>
 </div>
 
@@ -298,9 +297,8 @@
 	</div>
 </div>
 
-<div class="bottomTimer">
-<li><p id="timer"></p></li>
- <button id="startButton">START</button>
+
+
 <!--
 <button id="startCombatButton">Combat</button>
 <button id="combatArrayTestButton">ArraytestCombat</button>
@@ -308,7 +306,6 @@
 <button id="TimerStartButton">TimerTest</button>
 <button id="CombatTextButton">CombatText</button>
 -->
-</div>
 
 
 <script src="game_logic.js"></script>	
@@ -318,7 +315,6 @@
 	import {expValue} from "/export.js";
 	console.log(expValue);
 </script>
-
 blocked by CORS policy: Cross origin requests are only supported for 
 protocol schemes: http, data, chrome, chrome-extension, chrome-untrusted, https.
 -->

@@ -29,7 +29,7 @@ function startTimer(duration, display) {
 }
 
 function timer() {
-    let Minutes = 60 * 0.1,
+    let Minutes = 60 * 1,
         display = document.getElementById("timer");
     startTimer(Minutes, display);
 };
