@@ -1,6 +1,0 @@
-{
-    "name": "IslandBuilder Launch",
-    "type": "cppdbg",
-    "request": "launch",
-    "program": "C:\\Dev\\Project_Tateru2\\combat_test.js"
-}
