@@ -6,7 +6,7 @@ body, a {
 	position: relative;
 	height: 100%;
 	background-size: cover;
-	color: rgb(15, 124, 128);
+	color: white;
 	margin: 10px;
 	height: 700px;
 }
@@ -189,23 +189,29 @@ body, a {
 	height: 100%;
 	background: orange;
 	padding: 0px;
-	
+	background-image: url("images/mainCenterInfoWoodBackground2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+
 }
 
 #containerTabBuildingsImage {
 	height: 200px;
 	width: 200px;
-	background: grey;
+	
 }
 
 .buildingTabHeader {
 	text-align: center;
 	font-size: 150%;
+	color: rgb(110, 62, 30);
 }
 
 .buildingTabData {
- display: inline-block;
- position: absolute;
+	display: inline-block;
+	position: absolute;
+	color: rgb(110, 62, 30);
 }
 
 .buildingTabMain {
@@ -216,4 +222,8 @@ body, a {
 .buildingTabFooter {
 	font-size: 22px;
 	background: purple;
+	color: rgb(110, 62, 30);
+	background-image: url("images/mainCenterInfoWoodBackground2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
