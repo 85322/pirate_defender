@@ -6,3 +6,4 @@
 -ohne units wert 0 kein combat log [X]
 -combat kein reset nach sieg [X]
 -gebrauchte ressourcen bei stein/werkzeuge nicht korrekt [X]
+-ship2 baut nicht trotz ausreichender resourcen bei 150 holz [ ]

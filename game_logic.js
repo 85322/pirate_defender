@@ -56,10 +56,10 @@ let resources_array = [wood,stone,tools];
 
 function upgradeWood(){ 
 
-	if ((resources_array[0] > 60 * woodBuildingLevel) && (resources_array[1] > 15 * woodBuildingLevel)) {
+	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
 
-		let result_wood = Math.floor(resources_array[0] - 60 * woodBuildingLevel) - 30;
-		let result_stone = Math.floor(resources_array[1] - 15 * woodBuildingLevel) - 7;
+		let result_wood = Math.floor(resources_array[0] - 60 * woodBuildingLevel);
+		let result_stone = Math.floor(resources_array[1] - 15 * woodBuildingLevel);
 
 		resources_array[0] = result_wood;
 		resources_array[1] = result_stone;
@@ -196,6 +196,15 @@ document.getElementById("menuBuildings").onlclick=function(){
 }
 
 
+document.getElementById("menuMilitary").onlclick=function(){
+	iconImagechangerShip1Icon();
+	iconImagechangerShip2Icon();
+	iconImagechangerShip3Icon();
+	iconImagechangerTower1Icon();
+	iconImagechangerTower2Icon();
+}
+
+
 function iconImageChangerWoodCutterIcon() {
 	let image = document.getElementById('woodCutter_icon');
 	if (resources_array[0] > 60 * woodBuildingLevel && resources_array[1] > 15 * woodBuildingLevel) {
@@ -216,7 +225,7 @@ function iconImageChangerStoneCutterIcon() {
 		image.src = "images/icons/Stone_masons_hut_icon.png";
 		upgradeStoneButtonMainCenterInfo.disabled = false;
 	} else {
-		image.src = "images/icons/Stone_masons_hut_unable_icon.png";
+		image.src = "images/icons/Stone_masons_hut_unable_icon3.png";
 		upgradeStoneButtonMainCenterInfo.disabled = true;
 	}
 }
@@ -238,6 +247,71 @@ function iconImageChangerIronCutterIcon() {
 	window.setInterval(iconImageChangerIronCutterIcon, 500);
 
 
+function iconImagechangerShip1Icon(){
+	let image = document.getElementById('ship1ConstructorImage');
+	if (resources_array[0] > 100 && resources_array[2] > 25)  {
+		image.src = "images/ships/ship1.png";
+		constructShip1ButtonMainCenterInfo.disabled = false;
+	} else {
+		image.src = "images/ships/ship1_unable.png";
+		constructShip1ButtonMainCenterInfo.disabled = true;
+	}
+}
+	window.setInterval(iconImagechangerShip1Icon, 500);
+
+
+function iconImagechangerShip2Icon(){
+	let image = document.getElementById('ship2ConstructorImage');
+	if (resources_array[0] > 150 && resources_array[2] > 35)  {
+		image.src = "images/ships/ship2.png";
+		constructShip2ButtonMainCenterInfo.disabled = false;
+	} else {
+		image.src = "images/ships/ship2_unable.png";
+		constructShip2ButtonMainCenterInfo.disabled = true;
+	}
+}
+	window.setInterval(iconImagechangerShip2Icon, 500);
+
+
+function iconImagechangerShip3Icon(){
+	let image = document.getElementById('ship3ConstructorImage');
+	if (resources_array[0] > 200 && resources_array[2] > 60)  {
+		image.src = "images/ships/ship3.png";
+		constructShip3ButtonMainCenterInfo.disabled = false;
+	} else {
+		image.src = "images/ships/ship3_unable.png";
+		constructShip3ButtonMainCenterInfo.disabled = true;
+	}
+}
+	window.setInterval(iconImagechangerShip3Icon, 500);
+
+
+function iconImagechangerTower1Icon(){
+	let image = document.getElementById('tower1ConstructorImage');
+	if (resources_array[0] > 50 && resources_array[1] > 200 && resources_array[2] > 20)  {
+		image.src = "images/towers/tower1.png";
+		constructTower1ButtonMainCenterInfo.disabled = false;
+	} else {
+		image.src = "images/towers/tower1_unable.png";
+		constructTower1ButtonMainCenterInfo.disabled = true;
+	}
+}
+	window.setInterval(iconImagechangerTower1Icon, 500);
+
+function iconImagechangerTower2Icon(){
+	let image = document.getElementById('tower2ConstructorImage');
+	if (resources_array[0] > 75 && resources_array[1] > 300 && resources_array[2] > 30)  {
+		image.src = "images/towers/tower2.png";
+		constructTower2ButtonMainCenterInfo.disabled = false;
+	} else {
+		image.src = "images/towers/tower2_unable.png";
+		constructTower2ButtonMainCenterInfo.disabled = true;
+	}
+}
+	window.setInterval(iconImagechangerTower2Icon, 500);
+		
+
+			
 //RESOURCE PRODUCTION
 
 window.setInterval(production_wood, 2000);
