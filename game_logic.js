@@ -568,9 +568,6 @@ function combatArray(){
 
 
 	
-
-
-
  //RESOURCE STATISTICS
 
 let resourceArrayStatisticMinute = [wood, stone, tools];
@@ -621,8 +618,6 @@ function resourceMenuCalcProductionMinute(){
 //MAP GENERATION
 
 
-
-
 /*function mapGenerationRandomizer() {
 	let mapTileArray = ["images/island_tile.png", "images/water_tile.gif"]
 	let num = Math.floor(Math.random() * 1);
@@ -657,11 +652,5 @@ function mapGenerationRandomizer() {
 	document.getElementById("menuReset").onclick=function() {
 	mapReset();
 }
-
-
-
-
-
-
 
 };
