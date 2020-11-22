@@ -79,6 +79,10 @@ function openTabBuildings(tabNameBuildings) {
 		openTabBuildings('tower2_iconDetailTab');
 }
 
+	document.getElementById("atkUpgradeShipIcon").onclick=function () {
+		openTabBuildings('atkUpgrade_iconDetailTab');
+}
+
 //KEYBINDS
 
 const Action = {

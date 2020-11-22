@@ -33,6 +33,7 @@ body, a {
 		margin-bottom: 0px;		
 		width: 700px;
 		margin: 3px;
+		bottom: 20px;
 }
 
 #military {
@@ -141,9 +142,21 @@ body, a {
 
 
 #researchNav {
-	background-color: brown;
 	position: fixed;
-	bottom: 0px;
+	bottom: 20px;
+}
+
+#research li:hover {
+	border-color: yellow;
+}
+
+#research li {
+	/*background-color: black;*/
+	cursor: pointer;
+	margin: 3px;
+	height: 93px;
+	width: 93px;
+	border-radius: 10px;
 }
 
 .containerTab {
@@ -227,3 +240,5 @@ body, a {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+
