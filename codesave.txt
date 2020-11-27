@@ -1,0 +1,83 @@
+/*Upgrades bonus % values*/
+	//aus innerHTML span string zu int als basis *10 zu prozent endwert
+	let upgradeAttackValue = parseInt(document.getElementById("atkUpgrade").innerHTML)*10;
+	let upgradeAtk = Math.floor(((upgradeAttackValue / 100) * playerTotalAttack));
+		
+	let upgradeDefenseValue = parseInt(document.getElementById("defUpgrade").innerHTML)*10;
+	let upgradeDef = Math.floor(((upgradeDefenseValue / 100) * playerTotalHealth));
+	
+	
+	console.log("Total attack player: " + playerTotalAttack);
+	console.log('Bonus ATK = ' + upgradeAtk);
+	console.log('Bonus DEF = ' + upgradeDef);
+	
+	
+
+
+	
+	let combatTextArray = []; //nimmt mit .push daten aus while, gibt mit .join als string wieder
+
+	combatTextArray.push(
+	"Opponent total hp: " + opponentTotalHealth[0] + "\nPlayer total hp: " + playerTotalHealth);
+
+    while (playerTotalHealth && opponentTotalHealth[0] > 0) {
+
+        (playerTotalHealth + upgradeDef) -= opponentTotalAttack[0];
+		opponentTotalHealth[0] -= (playerTotalAttack + upgradeAtk);/
+
+
+
+
+
+
+
+
+
+
+
+//amount * atk/hp, for array summe = total atk/hp weil properties multiplizieren nicht geht
+function combatArray(){
+
+	let playerTotalHealth = 1;
+	
+	let militaryArrayTotalHealth = [
+		militaryArrayPlayer[0] * 150, 
+		militaryArrayPlayer[1] * 225, 
+		militaryArrayPlayer[2] * 350, 
+		militaryArrayPlayer[3] * 325, 
+		militaryArrayPlayer[4] * 500]; 
+	
+	for(var i in militaryArrayTotalHealth) { playerTotalHealth += militaryArrayTotalHealth[i]; }
+	console.log("Total health player: " + playerTotalHealth);
+
+	let militaryArrayTotalAttack = [
+		militaryArrayPlayer[0] * 25,
+		militaryArrayPlayer[1] * 40, 
+		militaryArrayPlayer[2] * 65, 
+		militaryArrayPlayer[3] * 20, 
+		militaryArrayPlayer[4] * 40];													
+
+	let playerTotalAttack = 1;
+
+	for(var i in militaryArrayTotalAttack) { Math.floor(playerTotalAttack += militaryArrayTotalAttack[i]); }
+	
+	/*Upgrades bonus % values*/
+	let upgradeAttackValue = parseInt(document.getElementById("atkUpgrade").innerHTML)*10;
+	let upgradeAtk = Math.floor(((upgradeAttackValue / 100) * playerTotalAttack));
+	
+	
+	console.log("Total attack player: " + playerTotalAttack);
+	console.log('Bonus ATK = ' + upgradeAtk);
+
+
+	
+	let combatTextArray = []; //nimmt mit .push daten aus while, gibt mit .join als string wieder
+
+	combatTextArray.push(
+	"Opponent total hp: " + opponentTotalHealth[0] + "\nPlayer total hp: " + playerTotalHealth);
+
+    while (playerTotalHealth && opponentTotalHealth[0] > 0) {
+
+        playerTotalHealth -= opponentTotalAttack[0];
+		opponentTotalHealth[0] -= (playerTotalAttack + upgradeAtk);
+

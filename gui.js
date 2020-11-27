@@ -83,6 +83,10 @@ function openTabBuildings(tabNameBuildings) {
 		openTabBuildings('atkUpgrade_iconDetailTab');
 }
 
+	document.getElementById("defUpgradeShipIcon").onclick=function () {
+		openTabBuildings('defUpgrade_iconDetailTab');
+}
+
 //KEYBINDS
 
 const Action = {

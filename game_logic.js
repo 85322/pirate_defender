@@ -4,10 +4,7 @@ document.getElementById("startButton").onclick = function() {
 	
 }
 
-
 function application(){
-
-
 
 //TIMER
 
@@ -44,9 +41,9 @@ let woodBuildingLevel = 0;
 let stoneBuildingLevel = 0;
 let ironBuildingLevel = 0;
 
-let wood = 3000;
-let stone = 2500;
-let tools = 1500;
+let wood = 600;
+let stone = 500;
+let tools = 300;
 
 let resources_array = [wood,stone,tools];
 
@@ -309,8 +306,30 @@ function iconImagechangerTower2Icon(){
 	}
 }
 	window.setInterval(iconImagechangerTower2Icon, 500);
-		
 
+	function iconImageChangerAtkUpgradeIcon() {
+		let image = document.getElementById('atkUpgradeShipIcon');
+		if (resources_array[0] > 20 && resources_array[2] > 5) {
+			image.src = "images/upgrades/atkUpgradeShipIcon.png";
+			upgradeWoodButtonMainCenterInfo.disabled = false;
+		} else {
+			image.src = "images/upgrades/atkUpgradeShipIconUnable.png";
+			upgradeWoodButtonMainCenterInfo.disabled = true;
+		}
+	}
+	window.setInterval(iconImageChangerAtkUpgradeIcon, 500);
+
+	function iconImageChangerDefUpgradeIcon() {
+		let image = document.getElementById('defUpgradeShipIcon');
+		if (resources_array[0] > 20 && resources_array[2] > 5) {
+			image.src = "images/upgrades/defUpgradeShipIcon.png";
+			upgradeWoodButtonMainCenterInfo.disabled = false;
+		} else {
+			image.src = "images/upgrades/defUpgradeShipIconUnable.png";
+			upgradeWoodButtonMainCenterInfo.disabled = true;
+		}
+	}
+	window.setInterval(iconImageChangerDefUpgradeIcon, 500);
 			
 //RESOURCE PRODUCTION
 
@@ -483,6 +502,8 @@ document.getElementById("constructTower2ButtonMainCenterInfo").onclick=function(
 	tower2Constructor();
 }
 
+//TEST AREA
+
 /*
 Kosten upgrades: 
 atk ship = 20 wood , 0 stone, 5 tools
@@ -493,11 +514,8 @@ eco wood = 20 wood , 0 stone, 5 tools
 eco stone = 0 wood , 20 stone, 5 tools
 eco tools = 5 wood , 0 stone, 10 tools
 */
-//TEST AREA
-
 
 let upgradeAtkShipLevel = 0;
-let upgradeAtkShipValue = [upgradeAtkShipLevel];
 
 function atkUpgradeShip(){
 	if (resources_array[0] > 20 && resources_array[2] > 5 ) {
@@ -524,7 +542,32 @@ document.getElementById("upgradeAtkShipButtonMainCenterInfo").onclick=function()
 	atkUpgradeShip();
 }
 
+let upgradeDefShipLevel = 0;
 
+function defUpgradeShip(){
+	if (resources_array[0] > 20 && resources_array[2] > 5 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 20);
+		let result_tools = Math.floor(resources_array[2] - 5);
+
+		resources_array[0] = result_wood;
+		resources_array[2] = result_tools;
+
+		upgradeDefShipLevel += 10;
+
+
+			console.log(upgradeDefShipLevel);
+			document.getElementById("defUpgrade").innerHTML = Math.floor(upgradeDefShipLevel / 10);
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		} else {
+			console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("upgradeDefShipButtonMainCenterInfo").onclick=function(){
+	defUpgradeShip();
+}
 
 //COMBAT SYSTEM
 
@@ -540,7 +583,7 @@ let opponentTotalHealth = [2000];
 let opponentTotalAttack = [40];
 let currentLevel = 1;
 
-//amount * atk/hp, for array summe = total atk/hp
+//amount * atk/hp, for array summe = total atk/hp weil properties multiplizieren nicht geht
 function combatArray(){
 
 	let playerTotalHealth = 1;
@@ -555,7 +598,6 @@ function combatArray(){
 	for(var i in militaryArrayTotalHealth) { playerTotalHealth += militaryArrayTotalHealth[i]; }
 	console.log("Total health player: " + playerTotalHealth);
 
-
 	let militaryArrayTotalAttack = [
 		militaryArrayPlayer[0] * 25,
 		militaryArrayPlayer[1] * 40, 
@@ -565,34 +607,36 @@ function combatArray(){
 
 	let playerTotalAttack = 1;
 
-
-
 	for(var i in militaryArrayTotalAttack) { Math.floor(playerTotalAttack += militaryArrayTotalAttack[i]); }
 	
 	/*Upgrades bonus % values*/
 	let upgradeAttackValue = parseInt(document.getElementById("atkUpgrade").innerHTML)*10;
 	let upgradeAtk = Math.floor(((upgradeAttackValue / 100) * playerTotalAttack));
 	
+	let upgradeDefenseValue = parseInt(document.getElementById("defUpgrade").innerHTML)*10;
+	let upgradeDef = Math.floor(((upgradeDefenseValue / 100) * playerTotalHealth));
 	
 	console.log("Total attack player: " + playerTotalAttack);
 	console.log('Bonus ATK = ' + upgradeAtk);
+	console.log('Bonus DEF = ' + upgradeDef);
 
-
+	playerTotalHealthWithBonus = playerTotalHealth + upgradeDef;
+	playerTotalAttackWithBonus = playerTotalAttack + upgradeAtk;
 	
 	let combatTextArray = []; //nimmt mit .push daten aus while, gibt mit .join als string wieder
 
 	combatTextArray.push(
-	"Opponent total hp: " + opponentTotalHealth[0] + "\nPlayer total hp: " + playerTotalHealth);
+	"Opponent total hp: " + opponentTotalHealth[0] + "\nPlayer total hp: " + playerTotalHealthWithBonus);
 
     while (playerTotalHealth && opponentTotalHealth[0] > 0) {
 
-        playerTotalHealth -= opponentTotalAttack[0];
-		opponentTotalHealth[0] -= (playerTotalAttack + upgradeAtk);
+        playerTotalHealthWithBonus -= opponentTotalAttack[0];
+		opponentTotalHealth[0] -= playerTotalAttackWithBonus;
 
-		console.log ("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
-		combatTextArray.push("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealth);
+		console.log ("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealthWithBonus);
+		combatTextArray.push("Opponent.hp: " + opponentTotalHealth[0] + "\nPlayer.hp: " + playerTotalHealthWithBonus);
 
-		if (playerTotalHealth < 1) {
+		if (playerTotalHealthWithBonus < 1) {
 				console.log("Defeat!");
 				alert("Combat results:")
 				alert(combatTextArray.join("\n\n"));
@@ -619,11 +663,6 @@ function combatArray(){
 			}
 		}
 }
-
-
-	
-
-
 
  //RESOURCE STATISTICS
 
@@ -675,8 +714,6 @@ function resourceMenuCalcProductionMinute(){
 //MAP GENERATION
 
 
-
-
 /*function mapGenerationRandomizer() {
 	let mapTileArray = ["images/island_tile.png", "images/water_tile.gif"]
 	let num = Math.floor(Math.random() * 1);
@@ -711,10 +748,6 @@ function mapGenerationRandomizer() {
 	document.getElementById("menuReset").onclick=function() {
 	mapReset();
 }
-
-
-
-
 
 
 
