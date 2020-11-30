@@ -87,11 +87,15 @@ function openTabBuildings(tabNameBuildings) {
 		openTabBuildings('defUpgrade_iconDetailTab');
 }
 
+	document.getElementById("ecoUpgradeShipIcon").onclick=function () {
+		openTabBuildings('ecoUpgrade_iconDetailTab');
+}
+
 //KEYBINDS
 
 const Action = {
 	help()    {
-		(window.alert("F1 = Help screen \n\nF4 = Reset \n\nGeneral tips: Build up your economy first, then invest into military.")) 
+		(window.alert("F1 = Help screen \n\nF4 = Reset \n\nGeneral tips: Build up your economy first, then invest into military.\n\nThe first level of production buildings is free.")) 
 	},
 	
 	reset(){

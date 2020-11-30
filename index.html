@@ -26,9 +26,9 @@
 <div id="buildingsNav" class="containerTab">
 	<nav id="buildings">
 		<ul>
-			<li id="woodCutter_tooltip"><span id="woodPara">Level 0</span><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"></li>
-			<li id="stoneCutter_tooltip"><span id="stonePara">Level 0</span><img id="stoneCutter_icon" src="images/icons/Stone_masons_hut_icon.png"></li>
-			<li id="ironSmelter_tooltip"><span id="ironPara">Level 0</span><img id="ironSmelter_icon" src="images/icons/Iron_smelter_icon.png"></li>
+			<li id="woodCutter_tooltip"><span id="woodPara">0</span><img id="woodCutter_icon" src="images/icons/Lumberjack_hut_icon.png"></li>
+			<li id="stoneCutter_tooltip"><span id="stonePara">0</span><img id="stoneCutter_icon" src="images/icons/Stone_masons_hut_icon.png"></li>
+			<li id="ironSmelter_tooltip"><span id="ironPara">0</span><img id="ironSmelter_icon" src="images/icons/Iron_smelter_icon.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -60,7 +60,7 @@
 		<ul>
 			<li id="atkUpgradeTooltip"><span id="atkUpgrade">0</span><img id="atkUpgradeShipIcon" src="images/upgrades/atkUpgradeShipIcon.png"></li>
 			<li id="defUpgradeTooltip"><span id="defUpgrade">0</span><img id="defUpgradeShipIcon" src="images/upgrades/defUpgradeShipIcon.png"></li>
-			<li>Eco upgrade</li>
+			<li id="ecoUpgradeTooltip"><span id="ecoUpgrade">0</span><img id="ecoUpgradeShipIcon" src="images/upgrades/ecoUpgradeShipIcon.png"></li>
 		</ul>
 	</nav>
 </div>
@@ -332,6 +332,25 @@
 		</div>
 		<div class="buildingTabFooter">
 			<p>Def upgrade info.</p>
+		</div>
+	</div>
+
+	<div id="ecoUpgrade_iconDetailTab" class="containerTabBuildings">
+		<div class="buildingTabHeader">
+			<p>Eco Upgrade</p>
+		</div>
+
+		<div class="buildingTabMain">
+			<img id="containerTabBuildingsImage" src="images/upgrades/ecoShipInfo.png">
+		</div>
+		<div class="buildingTabData">
+			<p class="mainCenterInfoResourcesRequired" id="mainCenterInfoNextLevelTools">
+				Wood : 15 Stone: 10 Tools: 5
+			</p>
+			<button id="upgradeEcoShipButtonMainCenterInfo" type="button">Upgrade</button>
+		</div>
+		<div class="buildingTabFooter">
+			<p>Eco upgrade info.</p>
 		</div>
 	</div>
 

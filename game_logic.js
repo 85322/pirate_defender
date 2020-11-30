@@ -8,7 +8,8 @@ function application(){
 
 //TIMER
 
-alert("Welcome, build stuff and defend", timer());
+alert("Greetings commander, we need to build up our economy and defenses before the first wave of pirates attack!\n\nClick Start to begin the first round.",
+timer());
 
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
@@ -29,7 +30,7 @@ function startTimer(duration, display) {
 }
 
 function timer() {
-    let Minutes = 60 * 0.2,
+    let Minutes = 60 * 1.0,
         display = document.getElementById("timer");
     startTimer(Minutes, display);
 };
@@ -48,7 +49,7 @@ let tools = 300;
 let resources_array = [wood,stone,tools];
 
 
-//WOOD UPGRADE
+//BUILDINGS
 //prüfen ob resourcen reichen aus array, dann preis * current lvl, in zwischenarray, dann ausgabe
 
 function upgradeWood(){ 
@@ -63,7 +64,7 @@ function upgradeWood(){
 
 			woodBuildingLevel += 1;
 
-			document.getElementById("woodPara").innerHTML = "Level " + woodBuildingLevel;
+			document.getElementById("woodPara").innerHTML = woodBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = woodBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelWood").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML = resources_array[0];
@@ -78,8 +79,6 @@ document.getElementById("upgradeWoodButtonMainCenterInfo").onclick=function (){
 	upgradeWood();
 }
 
-//STONE UPGRADE
-
 function upgradeStone(){
 
 	if (resources_array[0] > 45 * stoneBuildingLevel && resources_array[1] > 22 * stoneBuildingLevel) {
@@ -92,7 +91,7 @@ function upgradeStone(){
 
 			stoneBuildingLevel += 1;
 
-			document.getElementById("stonePara").innerHTML = "Level " + stoneBuildingLevel;
+			document.getElementById("stonePara").innerHTML = stoneBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = stoneBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelStone").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
@@ -107,7 +106,6 @@ document.getElementById("upgradeStoneButtonMainCenterInfo").onclick=function(){
 	upgradeStone();
 }
 
-//TOOLS UPGRADE
 
 function upgradeIron(){
 
@@ -121,7 +119,7 @@ function upgradeIron(){
 
 			ironBuildingLevel += 1;
 
-			document.getElementById("ironPara").innerHTML = "Level " + ironBuildingLevel;
+			document.getElementById("ironPara").innerHTML = ironBuildingLevel;
 			let buildLevelInfoBoxDisplayWeilJsNichtSchlauIst = ironBuildingLevel + 1;
 			document.getElementById("mainCenterInfoNextLevelTools").innerHTML = "Material required to improve to level " + buildLevelInfoBoxDisplayWeilJsNichtSchlauIst + " :";
 			document.getElementById("resource_wood").innerHTML =resources_array[0];
@@ -333,31 +331,37 @@ function iconImagechangerTower2Icon(){
 			
 //RESOURCE PRODUCTION
 
-window.setInterval(production_wood, 2000);
-window.setInterval(production_stone, 2000);
-window.setInterval(production_iron, 2000);
-
 function production_wood(){
 	let production = Math.floor(3 * woodBuildingLevel * 1,1);
-	resources_array[0] = resources_array[0] + production;
+	let upgradeEcoValue = parseInt(document.getElementById("ecoUpgrade").innerHTML) * 10;
+	let upgradeEco = Math.floor(((upgradeEcoValue / 100) * production ));
+	resources_array[0] = resources_array[0] + production + upgradeEco;
 
 	document.getElementById("resource_wood").innerHTML = resources_array[0];
 }
 
 function production_stone(){
 	let production = Math.floor(2 * stoneBuildingLevel * 1,1);
-	resources_array[1] = resources_array[1] + production;
+	let upgradeEcoValue = parseInt(document.getElementById("ecoUpgrade").innerHTML) * 10;
+	let upgradeEco = Math.floor(((upgradeEcoValue / 100) * production ));
+	resources_array[1] = resources_array[1] + production + upgradeEco;
 	
 	document.getElementById("resource_stone").innerHTML = resources_array[1];
 }
 
 function production_iron(){
+
 	let production = Math.floor(1 * ironBuildingLevel * 1,1);
-	resources_array[2] = resources_array[2] + production;
+	let upgradeEcoValue = parseInt(document.getElementById("ecoUpgrade").innerHTML) * 10;
+	let upgradeEco = Math.floor(((upgradeEcoValue / 100) * production ));
+	resources_array[2] = resources_array[2] + production +  + upgradeEco;
 	
 	document.getElementById("resource_iron").innerHTML = resources_array[2];
 }
 
+window.setInterval(production_wood, 2000);
+window.setInterval(production_stone, 2000);
+window.setInterval(production_iron, 2000);
 
 //MILITARY
 
@@ -569,6 +573,35 @@ document.getElementById("upgradeDefShipButtonMainCenterInfo").onclick=function()
 	defUpgradeShip();
 }
 
+let upgradeEcoShipLevel = 0;
+
+function ecoUpgradeShip(){
+	if (resources_array[0] > 15 && resources_array[1] > 10 && resources_array[2] > 5 ) {
+
+		let result_wood = Math.floor(resources_array[0] - 15);
+		let result_stone = Math.floor(resources_array[1] - 10);
+		let result_tools = Math.floor(resources_array[2] - 5);
+
+		resources_array[0] = result_wood;
+		resources_array[1] = result_stone;
+		resources_array[2] = result_tools;
+
+		upgradeEcoShipLevel += 10;
+
+			console.log(upgradeEcoShipLevel);
+			document.getElementById("ecoUpgrade").innerHTML = Math.floor(upgradeEcoShipLevel / 10);
+			document.getElementById("resource_wood").innerHTML =resources_array[0];
+			document.getElementById("resource_stone").innerHTML = resources_array[1];
+			document.getElementById("resource_iron").innerHTML = resources_array[2];
+		} else {
+			console.log("Not enough resources.");
+	}
+}
+
+document.getElementById("upgradeEcoShipButtonMainCenterInfo").onclick=function(){
+	ecoUpgradeShip();
+}
+
 //COMBAT SYSTEM
 
 /*
@@ -610,18 +643,18 @@ function combatArray(){
 	for(var i in militaryArrayTotalAttack) { Math.floor(playerTotalAttack += militaryArrayTotalAttack[i]); }
 	
 	/*Upgrades bonus % values*/
-	let upgradeAttackValue = parseInt(document.getElementById("atkUpgrade").innerHTML)*10;
+	let upgradeAttackValue = parseInt(document.getElementById("atkUpgrade").innerHTML) * 10;
 	let upgradeAtk = Math.floor(((upgradeAttackValue / 100) * playerTotalAttack));
 	
-	let upgradeDefenseValue = parseInt(document.getElementById("defUpgrade").innerHTML)*10;
+	let upgradeDefenseValue = parseInt(document.getElementById("defUpgrade").innerHTML) * 10;
 	let upgradeDef = Math.floor(((upgradeDefenseValue / 100) * playerTotalHealth));
 	
 	console.log("Total attack player: " + playerTotalAttack);
 	console.log('Bonus ATK = ' + upgradeAtk);
 	console.log('Bonus DEF = ' + upgradeDef);
 
-	playerTotalHealthWithBonus = playerTotalHealth + upgradeDef;
-	playerTotalAttackWithBonus = playerTotalAttack + upgradeAtk;
+	playerTotalHealthWithBonus = playerTotalHealth + upgradeDef; //weil -= nicht mit 2 argumenten in front funktioniert
+	playerTotalAttackWithBonus = playerTotalAttack + upgradeAtk; //
 	
 	let combatTextArray = []; //nimmt mit .push daten aus while, gibt mit .join als string wieder
 
@@ -669,6 +702,7 @@ function combatArray(){
 let resourceArrayStatisticMinute = [wood, stone, tools];
 
 function resourceMenuCalcProductionMinute(){
+
 	let productionWood = Math.floor(3 * woodBuildingLevel * 1,1);
 	let productionStone = Math.floor(2 * stoneBuildingLevel * 1,1);
 	let productionIron = Math.floor(1 * ironBuildingLevel * 1,1);
