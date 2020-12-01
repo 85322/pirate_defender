@@ -1,3 +1,5 @@
+
+
 //RIGHT SIDE NAV TABS
 //alle tabs der klasse display none, ausser das ausgewählte display block
 function openTab(tabName) {
@@ -16,7 +18,7 @@ document.getElementById("menuBuildings").onclick=function(){
 document.getElementById("menuResources").onclick=function(){
 	openTab('resourcesNav');
 }
-
+/*
 document.getElementById("menuFacilities").onclick=function(){
 	openTab('facilityNav');
 }
@@ -28,7 +30,7 @@ document.getElementById("menuResearch").onclick=function(){
 document.getElementById("menuMilitary").onclick=function(){
 	openTab('militaryNav');
 }
-
+*/
 
 document.getElementById("menuHelp").onclick=function(){
 	openTab('helpNav');

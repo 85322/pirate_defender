@@ -29,18 +29,19 @@ body, a {
 
 #buildings {
 		/*background-color: blue;*/
-		position: fixed;
+		position: absolute;
 		margin-bottom: 0px;		
 		width: 700px;
 		margin: 3px;
-		bottom: 20px;
+		bottom: 100px;
 }
 
 #military {
-	/*background-color: blue;*/
+	background-color: blue;
 	margin-bottom: 0px;		
 	width: 700px;
 	margin: 3px;
+	bottom: 150px;
 	
 }
 
@@ -72,13 +73,13 @@ body, a {
 #buildingsNav {
 	background-color: brown;
 	position: fixed;
-	bottom: 150px;
+	bottom: 10px;
 	
 }
 
 #militaryNav {
 
-	bottom: 20px;
+	bottom: 150px;
 	
 }
 
@@ -132,19 +133,11 @@ body, a {
 	text-shadow: black;
 	width: 150px;
 	height: 25px;
-	
-
 }
 
 #mainMenuRight li:hover {	
 	color: red;
   }
-
-
-#researchNav {
-	position: fixed;
-	bottom: 20px;
-}
 
 #research li:hover {
 	border-color: yellow;

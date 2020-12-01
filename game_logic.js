@@ -188,10 +188,6 @@ document.getElementById("menuBuildings").onlclick=function(){
 	iconImageChangerWoodCutterIcon();
 	iconImageChangerStoneCutterIcon();
 	iconImageChangerIronCutterIcon();
-}
-
-
-document.getElementById("menuMilitary").onlclick=function(){
 	iconImagechangerShip1Icon();
 	iconImagechangerShip2Icon();
 	iconImagechangerShip3Icon();
@@ -778,11 +774,7 @@ function mapGenerationRandomizer() {
  	function mapReset() {
 	location.reload();	 
 	}
-
 	document.getElementById("menuReset").onclick=function() {
 	mapReset();
 }
-
-
-
 };
